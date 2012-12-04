@@ -10,9 +10,13 @@
 
 @interface MSiPhoneTableViewController ()
 
+@property NSXMLParser *parser;
+
 @end
 
 @implementation MSiPhoneTableViewController
+
+@synthesize parser = _parser;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,11 +31,17 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if(!_parser)
+    {
+        _parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1"]];
+    }
+    
+    [_parser setDelegate:self];
+    
+    BOOL success = [_parser parse];
+    
+    NSLog(@"%i", success);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,21 +54,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return self.fetchResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [[self.fetchResultsController.sections objectAtIndex:section] numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"podcastCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -118,4 +125,28 @@
      */
 }
 
+
+#pragma mark - XML Parsing delegation
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    if([elementName isEqualToString:@"item"])
+    {
+        NSLog(@"%@", attributeDict);
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    NSLog(@"%@",string);
+}
+
+-(void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    
+}
+
+
+- (IBAction)downloadButton:(id)sender {
+}
 @end

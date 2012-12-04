@@ -4,23 +4,65 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Si Phone Table View Controller-->
+        <!--Si Phone Table View Controller - Modern Sabahlar-->
         <scene sceneID="jP3-OH-E0f">
             <objects>
                 <tableViewController id="ckI-Zz-l0r" customClass="MSiPhoneTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W7f-f4-WPF">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="W7f-f4-WPF">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GIU-Dz-jSR">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="podcastCell" rowHeight="62" id="GIU-Dz-jSR">
+                                <rect key="frame" x="0.0" y="22" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="29" id="uXA-iF-oMp"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                            <state key="normal" title="DL">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="downloadButton:" destination="ckI-Zz-l0r" eventType="touchUpInside" id="8Ix-hc-Pm2"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-Ez-iLc">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="e5a-XV-mZf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVq-dU-hnS" customClass="MSUnplayedSwitch">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="27" id="Iwl-fB-bdj"/>
+                                            </constraints>
+                                            <color key="onTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </switch>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Bdl-9u-OJz" secondAttribute="trailing" constant="20" type="default" id="93C-EC-p91"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="centerY" secondItem="GIU-Dz-jSR" secondAttribute="centerY" type="default" id="Axw-0L-l9j"/>
+                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="20" type="default" id="CvJ-Fh-7kK"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="S0o-Xh-zU3"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Wjw-ut-h62"/>
+                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="centerY" secondItem="7TN-Ez-iLc" secondAttribute="centerY" type="default" id="kQx-bz-fjf"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="centerX" secondItem="GIU-Dz-jSR" secondAttribute="centerX" type="default" id="qhH-o4-sHV"/>
+                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="top" secondItem="Bdl-9u-OJz" secondAttribute="top" type="default" id="tgG-9I-Elb"/>
+                                </constraints>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -28,7 +70,7 @@
                             <outlet property="delegate" destination="ckI-Zz-l0r" id="gmb-SM-QQT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ikg-1T-kLp"/>
+                    <navigationItem key="navigationItem" title="Modern Sabahlar" id="Ikg-1T-kLp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWD-mm-2RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,11 +97,22 @@
         </scene>
     </scenes>
     <classes>
+        <class className="MSUnplayedSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSUnplayedSwitch.h"/>
+        </class>
         <class className="MSiPhoneNavigationViewController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSiPhoneNavigationViewController.h"/>
         </class>
         <class className="MSiPhoneTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSiPhoneTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="downloadButton:"/>
+                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="isPlayedSwitch" candidateClass="MSUnplayedSwitch"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -22,6 +22,8 @@
 		50A1E2C7166E914B0045B1E7 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2C6166E914B0045B1E7 /* iPad.storyboard */; };
 		50A1E2CA166E91D10045B1E7 /* MSiPhoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */; };
 		50A1E2CD166E92100045B1E7 /* MSiPhoneNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CC166E92100045B1E7 /* MSiPhoneNavigationViewController.m */; };
+		50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */; };
+		50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2D2166E968E0045B1E7 /* Podcast.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,10 @@
 		50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiPhoneTableViewController.m; sourceTree = "<group>"; };
 		50A1E2CB166E92100045B1E7 /* MSiPhoneNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSiPhoneNavigationViewController.h; path = ../MSiPhoneNavigationViewController.h; sourceTree = "<group>"; };
 		50A1E2CC166E92100045B1E7 /* MSiPhoneNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSiPhoneNavigationViewController.m; path = ../MSiPhoneNavigationViewController.m; sourceTree = "<group>"; };
+		50A1E2CE166E962F0045B1E7 /* MSUnplayedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSUnplayedSwitch.h; sourceTree = "<group>"; };
+		50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSUnplayedSwitch.m; sourceTree = "<group>"; };
+		50A1E2D1166E968E0045B1E7 /* Podcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Podcast.h; sourceTree = "<group>"; };
+		50A1E2D2166E968E0045B1E7 /* Podcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Podcast.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +105,15 @@
 				50A1E2B3166E90100045B1E7 /* MSAppDelegate.h */,
 				50A1E2B4166E90100045B1E7 /* MSAppDelegate.m */,
 				50A1E2BC166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld */,
+				50A1E2D1166E968E0045B1E7 /* Podcast.h */,
+				50A1E2D2166E968E0045B1E7 /* Podcast.m */,
 				50A1E2AB166E90100045B1E7 /* Supporting Files */,
 				50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */,
 				50A1E2C6166E914B0045B1E7 /* iPad.storyboard */,
 				50A1E2C8166E91D10045B1E7 /* MSiPhoneTableViewController.h */,
 				50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */,
+				50A1E2CE166E962F0045B1E7 /* MSUnplayedSwitch.h */,
+				50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */,
 			);
 			path = "Modern Sabahlar";
 			sourceTree = "<group>";
@@ -195,6 +205,8 @@
 				50A1E2BE166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld in Sources */,
 				50A1E2CA166E91D10045B1E7 /* MSiPhoneTableViewController.m in Sources */,
 				50A1E2CD166E92100045B1E7 /* MSiPhoneNavigationViewController.m in Sources */,
+				50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */,
+				50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

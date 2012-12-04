@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MSUnplayedSwitch.h"
 
-@interface MSiPhoneTableViewController : UITableViewController
+@interface MSiPhoneTableViewController : UITableViewController <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController * fetchResultsController;
+
+- (IBAction)downloadButton:(id)sender;
 
 @end
