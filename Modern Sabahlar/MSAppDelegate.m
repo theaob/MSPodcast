@@ -7,6 +7,7 @@
 //
 
 #import "MSAppDelegate.h"
+#import "MSiPhoneTableViewController.h"
 
 @implementation MSAppDelegate
 
@@ -16,10 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
+    MSiPhoneTableViewController * mstvc = (MSiPhoneTableViewController *)[[nav viewControllers] objectAtIndex:0];
+    mstvc.managedObjectContext = self.managedObjectContext;
+    
+    /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];*/
+    
     return YES;
 }
 
