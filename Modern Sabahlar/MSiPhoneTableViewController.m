@@ -7,6 +7,7 @@
 //
 
 #import "MSiPhoneTableViewController.h"
+#import "Podcast.h"
 
 @interface MSiPhoneTableViewController ()
 
@@ -40,8 +41,14 @@
     
     BOOL success = [_parser parse];
     
-    NSLog(@"%i", success);
-    
+    if(success)
+    {
+        NSLog(@"Parsing Successful");
+    }
+    else
+    {
+        NSLog(@"Parsing Failed!");
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -128,22 +135,58 @@
 
 #pragma mark - XML Parsing delegation
 
+static BOOL startedItem = NO;
+static BOOL startedMediaAddress = NO;
+static BOOL startedTitle = NO;
+
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
     if([elementName isEqualToString:@"item"])
     {
-        NSLog(@"%@", attributeDict);
+        startedItem = YES;
+    }
+    else if([elementName isEqualToString:@"guid"])
+    {
+        startedMediaAddress = YES;
+    }
+    else if( [elementName isEqualToString:@"title"] )
+    {
+        startedTitle = YES;
     }
 }
 
+static NSString * path;
+static Podcast * podcast;
+
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    NSLog(@"%@",string);
+    if( startedMediaAddress )
+    {
+        path = [NSString stringWithFormat:@"%@%@",path, string];
+    }
+    else if(startedTitle)
+    {
+        //podcast = [[Podcast alloc] init];
+        path = [[NSString alloc] init];
+        
+    }
 }
 
 -(void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    
+    if([elementName isEqualToString:@"item"])
+    {
+        startedItem = NO;
+    }
+    else if([elementName isEqualToString:@"guid"])
+    {
+        NSLog(@"%@", path);
+        startedMediaAddress = NO;
+    }
+    else if( [elementName isEqualToString:@"title"] )
+    {
+        startedTitle = NO;
+    }
 }
 
 
