@@ -7,7 +7,7 @@
 //
 
 #import "MSAppDelegate.h"
-#import "MSiPhoneTableViewController.h"
+#import "MSTableViewController.h"
 
 @implementation MSAppDelegate
 
@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    MSiPhoneTableViewController * mstvc = (MSiPhoneTableViewController *)[[nav viewControllers] objectAtIndex:0];
+    MSTableViewController * mstvc = (MSTableViewController *)[[nav viewControllers] objectAtIndex:0];
     mstvc.managedObjectContext = self.managedObjectContext;
     
     /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

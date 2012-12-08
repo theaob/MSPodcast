@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Onur Baykal. All rights reserved.
 //
 
-#import "MSiPhoneNavigationViewController.h"
+#import "MSNavigationViewController.h"
 
-@interface MSiPhoneNavigationViewController ()
+@interface MSNavigationViewController ()
 
 @end
 
-@implementation MSiPhoneNavigationViewController
+@implementation MSNavigationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

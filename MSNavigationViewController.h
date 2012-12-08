@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MSiPhoneNavigationViewController : UINavigationController
+@interface MSNavigationViewController : UINavigationController
 
 @end

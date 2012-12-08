@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Si Phone Table View Controller - Modern Sabahlar-->
+        <!--Table View Controller - Modern Sabahlar-->
         <scene sceneID="jP3-OH-E0f">
             <objects>
-                <tableViewController id="ckI-Zz-l0r" customClass="MSiPhoneTableViewController" sceneMemberID="viewController">
+                <tableViewController id="ckI-Zz-l0r" customClass="MSTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="62" sectionHeaderHeight="22" sectionFooterHeight="22" id="W7f-f4-WPF">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1249" y="5"/>
         </scene>
-        <!--Si Phone Navigation View Controller - Item-->
+        <!--Navigation View Controller - Item-->
         <scene sceneID="KW0-BO-9G3">
             <objects>
-                <navigationController id="G4E-Fq-grY" customClass="MSiPhoneNavigationViewController" sceneMemberID="viewController">
+                <navigationController id="G4E-Fq-grY" customClass="MSNavigationViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7M4-I9-dgf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UeJ-UH-yFU">

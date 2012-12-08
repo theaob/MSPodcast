@@ -20,9 +20,8 @@
 		50A1E2BB166E90100045B1E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */; };
 		50A1E2BE166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2BC166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld */; };
 		50A1E2C5166E913E0045B1E7 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */; };
-		50A1E2C7166E914B0045B1E7 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2C6166E914B0045B1E7 /* iPad.storyboard */; };
-		50A1E2CA166E91D10045B1E7 /* MSiPhoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */; };
-		50A1E2CD166E92100045B1E7 /* MSiPhoneNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CC166E92100045B1E7 /* MSiPhoneNavigationViewController.m */; };
+		50A1E2CA166E91D10045B1E7 /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */; };
+		50A1E2CD166E92100045B1E7 /* MSNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CC166E92100045B1E7 /* MSNavigationViewController.m */; };
 		50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */; };
 		50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2D2166E968E0045B1E7 /* Podcast.m */; };
 /* End PBXBuildFile section */
@@ -46,11 +45,10 @@
 		50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		50A1E2BD166E90100045B1E7 /* Modern_Sabahlar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modern_Sabahlar.xcdatamodel; sourceTree = "<group>"; };
 		50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
-		50A1E2C6166E914B0045B1E7 /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPad.storyboard; sourceTree = "<group>"; };
-		50A1E2C8166E91D10045B1E7 /* MSiPhoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSiPhoneTableViewController.h; sourceTree = "<group>"; };
-		50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSiPhoneTableViewController.m; sourceTree = "<group>"; };
-		50A1E2CB166E92100045B1E7 /* MSiPhoneNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSiPhoneNavigationViewController.h; path = ../MSiPhoneNavigationViewController.h; sourceTree = "<group>"; };
-		50A1E2CC166E92100045B1E7 /* MSiPhoneNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSiPhoneNavigationViewController.m; path = ../MSiPhoneNavigationViewController.m; sourceTree = "<group>"; };
+		50A1E2C8166E91D10045B1E7 /* MSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTableViewController.h; sourceTree = "<group>"; };
+		50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSTableViewController.m; sourceTree = "<group>"; };
+		50A1E2CB166E92100045B1E7 /* MSNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSNavigationViewController.h; path = ../MSNavigationViewController.h; sourceTree = "<group>"; };
+		50A1E2CC166E92100045B1E7 /* MSNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSNavigationViewController.m; path = ../MSNavigationViewController.m; sourceTree = "<group>"; };
 		50A1E2CE166E962F0045B1E7 /* MSUnplayedSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSUnplayedSwitch.h; sourceTree = "<group>"; };
 		50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSUnplayedSwitch.m; sourceTree = "<group>"; };
 		50A1E2D1166E968E0045B1E7 /* Podcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Podcast.h; sourceTree = "<group>"; };
@@ -103,8 +101,8 @@
 		50A1E2AA166E90100045B1E7 /* Modern Sabahlar */ = {
 			isa = PBXGroup;
 			children = (
-				50A1E2CB166E92100045B1E7 /* MSiPhoneNavigationViewController.h */,
-				50A1E2CC166E92100045B1E7 /* MSiPhoneNavigationViewController.m */,
+				50A1E2CB166E92100045B1E7 /* MSNavigationViewController.h */,
+				50A1E2CC166E92100045B1E7 /* MSNavigationViewController.m */,
 				50A1E2B3166E90100045B1E7 /* MSAppDelegate.h */,
 				50A1E2B4166E90100045B1E7 /* MSAppDelegate.m */,
 				50A1E2BC166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld */,
@@ -112,9 +110,8 @@
 				50A1E2D2166E968E0045B1E7 /* Podcast.m */,
 				50A1E2AB166E90100045B1E7 /* Supporting Files */,
 				50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */,
-				50A1E2C6166E914B0045B1E7 /* iPad.storyboard */,
-				50A1E2C8166E91D10045B1E7 /* MSiPhoneTableViewController.h */,
-				50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */,
+				50A1E2C8166E91D10045B1E7 /* MSTableViewController.h */,
+				50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */,
 				50A1E2CE166E962F0045B1E7 /* MSUnplayedSwitch.h */,
 				50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */,
 				5030D0E0167326CA008733D3 /* MSPodcastCell.h */,
@@ -194,7 +191,6 @@
 				50A1E2B9166E90100045B1E7 /* Default@2x.png in Resources */,
 				50A1E2BB166E90100045B1E7 /* Default-568h@2x.png in Resources */,
 				50A1E2C5166E913E0045B1E7 /* iPhone.storyboard in Resources */,
-				50A1E2C7166E914B0045B1E7 /* iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +204,8 @@
 				50A1E2B1166E90100045B1E7 /* main.m in Sources */,
 				50A1E2B5166E90100045B1E7 /* MSAppDelegate.m in Sources */,
 				50A1E2BE166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld in Sources */,
-				50A1E2CA166E91D10045B1E7 /* MSiPhoneTableViewController.m in Sources */,
-				50A1E2CD166E92100045B1E7 /* MSiPhoneNavigationViewController.m in Sources */,
+				50A1E2CA166E91D10045B1E7 /* MSTableViewController.m in Sources */,
+				50A1E2CD166E92100045B1E7 /* MSNavigationViewController.m in Sources */,
 				50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */,
 				50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */,
 				5030D0E2167326CA008733D3 /* MSPodcastCell.m in Sources */,

@@ -6,17 +6,17 @@
 //  Copyright (c) 2012 Onur Baykal. All rights reserved.
 //
 
-#import "MSiPhoneTableViewController.h"
+#import "MSTableViewController.h"
 #import "Podcast.h"
 #import "MSPodcastCell.h"
 
-@interface MSiPhoneTableViewController ()
+@interface MSTableViewController ()
 
 @property NSXMLParser *parser;
 
 @end
 
-@implementation MSiPhoneTableViewController
+@implementation MSTableViewController
 
 @synthesize parser = _parser;
 
@@ -44,6 +44,7 @@
     Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
     p.date = [NSDate date];
     
+    [self.managedObjectContext insertObject:podcast];
 
 //    NSURL * podcastURL;
 //    

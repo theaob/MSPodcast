@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MSUnplayedSwitch.h"
 
-@interface MSiPhoneTableViewController : UITableViewController <NSXMLParserDelegate>
+@interface MSTableViewController : UITableViewController <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController * fetchResultsController;
