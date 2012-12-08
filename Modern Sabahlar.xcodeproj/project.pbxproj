@@ -36,7 +36,7 @@
 		5030D0E1167326CA008733D3 /* MSPodcastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPodcastCell.m; sourceTree = "<group>"; };
 		5030D0E41673361A008733D3 /* MSNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNavigationViewController.h; sourceTree = "<group>"; };
 		5030D0E51673361A008733D3 /* MSNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNavigationViewController.m; sourceTree = "<group>"; };
-		50A1E29E166E90100045B1E7 /* Modern Sabahlar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Modern Sabahlar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A1E29E166E90100045B1E7 /* MS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50A1E2A4166E90100045B1E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,7 +96,7 @@
 		50A1E29F166E90100045B1E7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				50A1E29E166E90100045B1E7 /* Modern Sabahlar.app */,
+				50A1E29E166E90100045B1E7 /* MS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 			);
 			name = "Modern Sabahlar";
 			productName = "Modern Sabahlar";
-			productReference = 50A1E29E166E90100045B1E7 /* Modern Sabahlar.app */;
+			productReference = 50A1E29E166E90100045B1E7 /* MS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -315,7 +315,7 @@
 				GCC_PREFIX_HEADER = "Modern Sabahlar/Modern Sabahlar-Prefix.pch";
 				INFOPLIST_FILE = "Modern Sabahlar/Modern Sabahlar-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MS;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

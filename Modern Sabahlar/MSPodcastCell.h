@@ -11,6 +11,7 @@
 
 @interface MSPodcastCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *podcastLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
 @property (weak, nonatomic) IBOutlet MSUnplayedSwitch *playedSwitch;
 
 @end

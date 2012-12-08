@@ -28,12 +28,29 @@
     
     if( ![[self fetchResultsController] performFetch:&error] )
     {
-        NSLog(@"Error!");
+        NSLog(@"Error! %@", error);
         abort();
     }
     
-    //self.retreivePodcastsFromXML;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
     
+    NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:NO];
+    
+    [fetchRequest setEntity:entity];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sorter, nil]];
+    [fetchRequest setFetchLimit:1];
+    
+    
+    NSArray *fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"Error! %@", error);
+    }
+    
+    if(fetchedObjects.count < 1)
+    {
+        [self retreivePodcastsFromXML];
+    }
 
 }
 
@@ -72,7 +89,16 @@
     
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     
-    cell.podcastLabel.text = cellPodcast.title;
+    cell.podcastLabel.text = [dateFormatter stringFromDate:cellPodcast.title];
+    
+    if([[cellPodcast.duration substringToIndex:2] isEqualToString:@"00"])
+    {
+        cell.lengthLabel.text = [cellPodcast.duration substringFromIndex:3];
+    }
+    else
+    {
+        cell.lengthLabel.text = cellPodcast.duration;
+    }
     
     return cell;
 }
@@ -83,7 +109,7 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+      *detailViewController = [[ alloc] initWithNibName:@"" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
@@ -122,6 +148,8 @@ static NSString * audioAddressString;
 {
     int counter = 1;
     
+    NSString * formatString = @"dd/MM/yy";
+    
     NSEntityDescription * ped = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
     
     TBXMLElement * firstItem;
@@ -152,7 +180,11 @@ static NSString * audioAddressString;
         {
             _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
             
-            _parsedPodcast.title = titleString;
+            NSDate * date = [MSTableViewController parseDate:titleString format:formatString];
+            
+            NSLog(@"%@ %@", date, titleString);
+            
+            _parsedPodcast.title = date;
             _parsedPodcast.duration = durationString;
             _parsedPodcast.audioPath = audioAddressString;
             _parsedPodcast.finished = NO;
@@ -215,6 +247,14 @@ static NSString * audioAddressString;
     {
         NSLog(@"Successfully saved new data!");
     }
+}
+
++ (NSDate*)parseDate:(NSString*)inStrDate format:(NSString*)inFormat {
+    NSDateFormatter* dtFormatter = [[NSDateFormatter alloc] init];
+    //[dtFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_GB"]];//[NSLocale systemLocale]];
+    [dtFormatter setDateFormat:inFormat];
+    NSDate* dateOutput = [dtFormatter dateFromString:inStrDate];
+    return dateOutput;
 }
 
 static AVPlayer * audioPlayer;

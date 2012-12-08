@@ -21,5 +21,6 @@
 
 - (IBAction)downloadButtonPressed:(UIButton *)sender;
 
++ (NSDate*)parseDate:(NSString*)inStrDate format:(NSString*)inFormat;
 
 @end

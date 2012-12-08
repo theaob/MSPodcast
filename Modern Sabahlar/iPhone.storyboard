@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - Modern Sabahlar-->
+        <!--Table View Controller-->
         <scene sceneID="jP3-OH-E0f">
             <objects>
                 <tableViewController id="ckI-Zz-l0r" customClass="MSTableViewController" sceneMemberID="viewController">
@@ -22,6 +22,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="gJb-hc-rad"/>
                                                 <constraint firstAttribute="width" constant="29" id="uXA-iF-oMp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
@@ -45,25 +46,29 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVq-dU-hnS" customClass="MSUnplayedSwitch">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="27" id="Uev-vy-if7"/>
-                                            </constraints>
                                             <color key="onTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-Mm-bnB">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Bdl-9u-OJz" secondAttribute="trailing" constant="20" type="default" id="93C-EC-p91"/>
                                     <constraint firstItem="bVq-dU-hnS" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="20" type="default" id="CvJ-Fh-7kK"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="11" id="EMe-EO-K3G"/>
                                     <constraint firstItem="Bdl-9u-OJz" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="S0o-Xh-zU3"/>
-                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Wjw-ut-h62"/>
-                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="bottom" secondItem="Bdl-9u-OJz" secondAttribute="bottom" type="default" id="hTc-0n-gdH"/>
-                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="centerY" secondItem="7TN-Ez-iLc" secondAttribute="centerY" type="default" id="jDn-Vs-pHh"/>
-                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="centerY" secondItem="7TN-Ez-iLc" secondAttribute="centerY" type="default" id="kQx-bz-fjf"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="16" id="Y7y-bD-LMO"/>
+                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="leading" type="default" id="YuC-qH-wIe"/>
+                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="oyL-OY-NGf"/>
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="centerX" secondItem="GIU-Dz-jSR" secondAttribute="centerX" type="default" id="qhH-o4-sHV"/>
+                                    <constraint firstAttribute="bottom" secondItem="5zh-Mm-bnB" secondAttribute="bottom" constant="10" id="wQA-Fm-un9"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="lengthLabel" destination="5zh-Mm-bnB" id="IKh-8d-ivj"/>
                                     <outlet property="playedSwitch" destination="bVq-dU-hnS" id="esg-ty-3wZ"/>
                                     <outlet property="podcastLabel" destination="7TN-Ez-iLc" id="ZH9-Gp-vA3"/>
                                 </connections>
@@ -74,7 +79,7 @@
                             <outlet property="delegate" destination="ckI-Zz-l0r" id="gmb-SM-QQT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Modern Sabahlar" id="Ikg-1T-kLp"/>
+                    <navigationItem key="navigationItem" id="Ikg-1T-kLp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWD-mm-2RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,6 +105,31 @@
             <point key="canvasLocation" x="723" y="5"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="MSNavigationViewController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNavigationViewController.h"/>
+        </class>
+        <class className="MSPodcastCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSPodcastCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playedSwitch" candidateClass="MSUnplayedSwitch"/>
+                <relationship kind="outlet" name="podcastLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MSTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="downloadButtonPressed:" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MSUnplayedSwitch" superclassName="UISwitch">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSUnplayedSwitch.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
