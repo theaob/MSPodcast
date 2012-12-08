@@ -32,7 +32,7 @@
         abort();
     }
     
-
+    //self.retreivePodcastsFromXML;
     
 
 }
@@ -93,9 +93,8 @@
 
 #pragma mark - XML Traversing
 
-- (BOOL) retreivePodcastsFromXML
+- (void) retreivePodcastsFromXML
 {
-    static BOOL isSuccessful = NO;
     //    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
     
     NSString * podcastString = @"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1";
@@ -104,7 +103,6 @@
         // If TBXML found a root node, process element and iterate all children
         if (tbxmlDocument.rootXMLElement)
             [self traverseElement:tbxmlDocument.rootXMLElement];
-        isSuccessful = YES;
     };
     
     
@@ -114,7 +112,6 @@
     
     _tbxmlParser = [[TBXML alloc] initWithURL:[NSURL URLWithString:podcastString] success:successBlock failure:failureBlock];
     
-    return isSuccessful;
 }
 
 static NSString * titleString;
@@ -148,17 +145,22 @@ static NSString * audioAddressString;
         
         durationString = [TBXML textForElement:dataElement];
         
-        _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
-        
-        _parsedPodcast.title = titleString;
-        _parsedPodcast.duration = durationString;
-        _parsedPodcast.audioPath = audioAddressString;
-        _parsedPodcast.finished = NO;
-        _parsedPodcast.isPlayed = NO;
-        
-        [_managedObjectContext insertObject:_parsedPodcast];
+        titleString = [titleString substringFromIndex:16];
         
         
+        if(![[titleString substringToIndex:1] isEqualToString:@"~"])
+        {
+            _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
+            
+            _parsedPodcast.title = titleString;
+            _parsedPodcast.duration = durationString;
+            _parsedPodcast.audioPath = audioAddressString;
+            _parsedPodcast.finished = NO;
+            _parsedPodcast.isPlayed = NO;
+            
+            [_managedObjectContext insertObject:_parsedPodcast];
+        }
+
         firstItem = firstItem->nextSibling;
         counter++;
     }
@@ -167,13 +169,7 @@ static NSString * audioAddressString;
     
     if(![_managedObjectContext save:&error])
     {
-        NSLog(@"There was an error while saving!");
-    }
-    else
-    {
-    
-        [self.tableView reloadData];
-        
+        NSLog(@"There was an error while saving! %@", error);
     }
     
     NSLog(@"%d", counter);
@@ -221,9 +217,14 @@ static NSString * audioAddressString;
     }
 }
 
-- (IBAction)downloadButton:(id)sender
+static AVPlayer * audioPlayer;
+- (IBAction)downloadButtonPressed:(UIButton *)sender
 {
-    AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2847&dummy.mp3?"] error:nil];
+    NSString * mp3Path = @"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2848&dummy.mp3?";
+    NSURL * mp3URL = [[NSURL alloc] initWithString:mp3Path];
+    
+    audioPlayer = [[AVPlayer alloc] initWithURL:mp3URL];
+
     [audioPlayer play];
 }
 @end

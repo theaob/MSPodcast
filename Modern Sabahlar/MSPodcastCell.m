@@ -25,7 +25,4 @@
 
     // Configure the view for the selected state
 }
-
-- (IBAction)downloadButtonTouched:(UIButton *)sender {
-}
 @end

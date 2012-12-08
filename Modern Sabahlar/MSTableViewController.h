@@ -19,4 +19,7 @@
 @property (nonatomic, strong) TBXML * tbxmlParser;
 @property (nonatomic, strong) Podcast * parsedPodcast;
 
+- (IBAction)downloadButtonPressed:(UIButton *)sender;
+
+
 @end

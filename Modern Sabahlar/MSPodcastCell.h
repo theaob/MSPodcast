@@ -11,7 +11,6 @@
 
 @interface MSPodcastCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *podcastLabel;
-- (IBAction)downloadButtonTouched:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet MSUnplayedSwitch *playedSwitch;
 
 @end
