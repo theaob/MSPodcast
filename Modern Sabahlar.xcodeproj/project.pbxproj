@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5030D0E2167326CA008733D3 /* MSPodcastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030D0E1167326CA008733D3 /* MSPodcastCell.m */; };
 		50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A2166E90100045B1E7 /* UIKit.framework */; };
 		50A1E2A5166E90100045B1E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A4166E90100045B1E7 /* Foundation.framework */; };
 		50A1E2A7166E90100045B1E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5030D0E0167326CA008733D3 /* MSPodcastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPodcastCell.h; sourceTree = "<group>"; };
+		5030D0E1167326CA008733D3 /* MSPodcastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPodcastCell.m; sourceTree = "<group>"; };
 		50A1E29E166E90100045B1E7 /* Modern Sabahlar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Modern Sabahlar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50A1E2A4166E90100045B1E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -114,6 +117,8 @@
 				50A1E2C9166E91D10045B1E7 /* MSiPhoneTableViewController.m */,
 				50A1E2CE166E962F0045B1E7 /* MSUnplayedSwitch.h */,
 				50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */,
+				5030D0E0167326CA008733D3 /* MSPodcastCell.h */,
+				5030D0E1167326CA008733D3 /* MSPodcastCell.m */,
 			);
 			path = "Modern Sabahlar";
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				50A1E2CD166E92100045B1E7 /* MSiPhoneNavigationViewController.m in Sources */,
 				50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */,
 				50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */,
+				5030D0E2167326CA008733D3 /* MSPodcastCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +321,7 @@
 				50A1E2C3166E90100045B1E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

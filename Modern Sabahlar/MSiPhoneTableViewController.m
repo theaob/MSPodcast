@@ -8,6 +8,7 @@
 
 #import "MSiPhoneTableViewController.h"
 #import "Podcast.h"
+#import "MSPodcastCell.h"
 
 @interface MSiPhoneTableViewController ()
 
@@ -31,24 +32,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSError * error = nil;
+    
+    if( ![[self fetchResultsController] performFetch:&error] )
+    {
+        NSLog(@"Error!");
+        abort();
+    }
+        
+    Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
+    p.date = [NSDate date];
+    
 
-    if(!_parser)
-    {
-        _parser = [[NSXMLParser alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1"]];
-    }
-    
-    [_parser setDelegate:self];
-    
-    BOOL success = [_parser parse];
-    
-    if(success)
-    {
-        NSLog(@"Parsing Successful");
-    }
-    else
-    {
-        NSLog(@"Parsing Failed!");
-    }
+//    NSURL * podcastURL;
+//    
+//    if(!_parser)
+//    {
+//        podcastURL = [[NSURL alloc] initWithString:@"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1"];
+//        _parser = [[NSXMLParser alloc] initWithContentsOfURL:podcastURL];
+//    }
+//    
+//    [_parser setDelegate:self];
+//    
+//    if(podcastURL != nil)
+//    {
+//    BOOL success = [_parser parse];
+//    
+//    if(success)
+//    {
+//        NSLog(@"Parsing Successful");
+//    }
+//    else
+//    {
+//        NSLog(@"Parsing Failed!");
+//    }
+//    }
+//    else
+//    {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Podcast server is not responding!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+//        
+//        [alert show];
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,9 +98,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"podcastCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    MSPodcastCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if(cell == nil)
+    {
+        cell = [[MSPodcastCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    Podcast * cellPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
+    
+    cell.podcastLabel.text = cellPodcast.date.description;
     
     return cell;
 }
@@ -163,11 +195,13 @@ static Podcast * podcast;
     if( startedMediaAddress )
     {
         path = [NSString stringWithFormat:@"%@%@",path, string];
+        podcast.audioPath = path;
     }
     else if(startedTitle)
     {
-        //podcast = [[Podcast alloc] init];
+        
         path = [[NSString alloc] init];
+        podcast = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
         
     }
 }
@@ -189,6 +223,34 @@ static Podcast * podcast;
     }
 }
 
+
+#pragma mark - Core Data Methods
+
+- (NSFetchedResultsController *)fetchResultsController
+{
+    if(_fetchResultsController != nil)
+    {
+        return _fetchResultsController;
+    }
+    else
+    {
+        NSFetchRequest * request = [[NSFetchRequest alloc] init];
+        NSEntityDescription * entity = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:self.managedObjectContext];
+        
+        [request setEntity:entity];
+        
+        NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+        
+        [request setSortDescriptors:[[NSArray alloc] initWithObjects:sorter, nil]];
+        
+        
+        
+        
+        _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:nil];
+        
+        return _fetchResultsController;
+    }
+}
 
 - (IBAction)downloadButton:(id)sender {
 }

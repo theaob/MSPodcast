@@ -14,6 +14,4 @@
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController * fetchResultsController;
 
-- (IBAction)downloadButton:(id)sender;
-
 @end

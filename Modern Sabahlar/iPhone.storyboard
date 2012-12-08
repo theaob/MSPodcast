@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="podcastCell" rowHeight="62" id="GIU-Dz-jSR">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="podcastCell" rowHeight="62" id="GIU-Dz-jSR" customClass="MSPodcastCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="62"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -33,7 +33,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="downloadButton:" destination="ckI-Zz-l0r" eventType="touchUpInside" id="8Ix-hc-Pm2"/>
+                                                <action selector="downloadButtonTouched:" destination="GIU-Dz-jSR" eventType="touchUpInside" id="s4G-1T-XEL"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-Ez-iLc">
@@ -63,6 +63,10 @@
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="centerX" secondItem="GIU-Dz-jSR" secondAttribute="centerX" type="default" id="qhH-o4-sHV"/>
                                     <constraint firstItem="bVq-dU-hnS" firstAttribute="top" secondItem="Bdl-9u-OJz" secondAttribute="top" type="default" id="tgG-9I-Elb"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="playedSwitch" destination="bVq-dU-hnS" id="esg-ty-3wZ"/>
+                                    <outlet property="podcastLabel" destination="7TN-Ez-iLc" id="ZH9-Gp-vA3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -96,25 +100,6 @@
             <point key="canvasLocation" x="723" y="5"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MSUnplayedSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSUnplayedSwitch.h"/>
-        </class>
-        <class className="MSiPhoneNavigationViewController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSiPhoneNavigationViewController.h"/>
-        </class>
-        <class className="MSiPhoneTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSiPhoneTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="downloadButton:"/>
-                <relationship kind="outlet" name="dateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="isPlayedSwitch" candidateClass="MSUnplayedSwitch"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
