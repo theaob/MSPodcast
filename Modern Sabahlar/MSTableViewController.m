@@ -13,6 +13,7 @@
 @interface MSTableViewController ()
 
 @property NSXMLParser *parser;
+@property NSDate * latestPodcastDate;
 
 @end
 
@@ -40,47 +41,66 @@
         NSLog(@"Error!");
         abort();
     }
+    
+    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription * entity = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    
+    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sorter, nil]];
+    
+    //[fetchRequest setFetchLimit:1];
+    
+    NSArray * fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if(fetchedObjects.count < 1)
+    {
+        NSLog(@"There were no previous podcasts!");
+        if( error != nil)
+            NSLog(@"%@", error);
+        _latestPodcastDate = [NSDate distantPast];
+    }
+    else
+    {
+        _latestPodcastDate = [[fetchedObjects objectAtIndex:0] date];
+    }
+    
+    
+        
+                                    
+    
+//    _latestPodcastDate = [[self fetchResultsController] fetchRequest];
         
 //    Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
 //    p.date = [NSDate date];
 //    
 //    
-//    if(![self.managedObjectContext save:&error])
-//    {
-//        NSLog(@"Save error!");
-//    }
-    
-    
 
-//    NSURL * podcastURL;
-//    
-//    if(!_parser)
-//    {
-//        podcastURL = [[NSURL alloc] initWithString:@"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1"];
-//        _parser = [[NSXMLParser alloc] initWithContentsOfURL:podcastURL];
-//    }
-//    
-//    [_parser setDelegate:self];
-//    
-//    if(podcastURL != nil)
-//    {
-//    BOOL success = [_parser parse];
-//    
-//    if(success)
-//    {
-//        NSLog(@"Parsing Successful");
-//    }
-//    else
-//    {
-//        NSLog(@"Parsing Failed!");
-//    }
-//    }
-//    else
-//    {
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error!" message:@"Podcast server is not responding!" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-//        
-//        [alert show];
-//    }
+    
+//    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
+    
+    NSString * podcastString = @"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1";
+    
+    if(!_parser)
+    {
+        _parser = [[NSXMLParser alloc] initWithContentsOfURL:[[NSURL alloc] initWithString:podcastString]];
+    }
+    
+    [_parser setDelegate:self];
+    
+    BOOL success = [_parser parse];
+    
+    if(success)
+    {
+        NSLog(@"Parsing Successful");
+    }
+    else
+    {
+        NSLog(@"Parsing Failed!");
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,6 +201,8 @@
 static BOOL startedItem = NO;
 static BOOL startedMediaAddress = NO;
 static BOOL startedTitle = NO;
+static BOOL startedDuration = NO;
+static BOOL newItems = NO;
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
@@ -196,9 +218,14 @@ static BOOL startedTitle = NO;
     {
         startedTitle = YES;
     }
+    else if( [elementName isEqualToString:@"itunes:duration"])
+    {
+        startedDuration = YES;
+    }
 }
 
 static NSString * path;
+static NSString * duration;
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
@@ -210,7 +237,12 @@ static NSString * path;
     {
         
         path = [[NSString alloc] init];
+        duration = [[NSString alloc] init];
         
+    }
+    else if(startedDuration)
+    {
+        path = [NSString stringWithFormat:@"%@%@", duration, string];
     }
 }
 
@@ -220,9 +252,27 @@ static NSString * path;
 {
     static Podcast * podcast;
     static NSDateFormatter * formatter;
+    
+    if(podcast == nil)
+    {
+        podcast = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
+    }
+    
     if([elementName isEqualToString:@"item"])
     {
         startedItem = NO;
+        
+        if(podcast.date > _latestPodcastDate)
+        {
+            if(podcast.date != nil)
+            {
+                podcast.isPlayed = NO;
+                [self.managedObjectContext insertObject:podcast];
+                newItems = YES;
+            }
+        }
+        
+        //podcast = nil;
     }
     else if([elementName isEqualToString:@"guid"])
     {
@@ -235,8 +285,21 @@ static NSString * path;
         {
             formatter = [[NSDateFormatter alloc] init];
         }
-        podcast.date = [formatter dateFromString:path];
-        startedTitle = NO;
+        if( path != nil)
+        {
+            podcast.date = [formatter dateFromString:path];
+            startedTitle = NO;
+        }
+    }
+    else if( [elementName isEqualToString:@"itunes:duration"])
+    {
+        podcast.duration = path;
+        startedDuration = NO;
+    }
+    else if( [elementName isEqualToString:@"channel"])
+    {
+        if(newItems)
+            [self saveData];
     }
 }
 
@@ -266,6 +329,16 @@ static NSString * path;
         _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:nil];
         
         return _fetchResultsController;
+    }
+}
+
+- (void) saveData
+{
+    NSError * error = nil;
+    if(![self.managedObjectContext save:&error])
+    {
+        NSLog(@"Could not save to managed object context!");
+        NSLog(@"%@", error);
     }
 }
 

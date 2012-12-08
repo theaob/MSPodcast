@@ -16,4 +16,9 @@
 @dynamic audioPath;
 @dynamic duration;
 
+- (NSString *) description
+{    
+    return [NSString stringWithFormat:@"Date: %@ isPlayed: %@  path: %@ duration: %@", self.date, self.isPlayed, self.audioPath, self.duration, nil];
+}
+
 @end
