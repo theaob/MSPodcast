@@ -12,9 +12,10 @@
 
 @interface Podcast : NSManagedObject
 
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * isPlayed;
 @property (nonatomic, retain) NSString * audioPath;
 @property (nonatomic, retain) NSString * duration;
+@property (nonatomic, retain) NSNumber * finished;
 
 @end

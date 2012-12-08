@@ -2,11 +2,12 @@
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Podcast" representedClassName="Podcast" syncable="YES">
         <attribute name="audioPath" attributeType="String" syncable="YES"/>
-        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="finished" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isPlayed" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="title" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Podcast" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Podcast" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

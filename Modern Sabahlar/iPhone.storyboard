@@ -23,6 +23,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="29" id="uXA-iF-oMp"/>
+                                                <constraint firstAttribute="height" constant="29" id="yiU-gf-P5o"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                             <state key="normal" title="DL">
@@ -37,17 +38,11 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-Ez-iLc">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="e5a-XV-mZf"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVq-dU-hnS" customClass="MSUnplayedSwitch">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="27" id="Iwl-fB-bdj"/>
-                                            </constraints>
                                             <color key="onTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </switch>
                                     </subviews>
@@ -59,9 +54,9 @@
                                     <constraint firstItem="bVq-dU-hnS" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="20" type="default" id="CvJ-Fh-7kK"/>
                                     <constraint firstItem="Bdl-9u-OJz" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="S0o-Xh-zU3"/>
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Wjw-ut-h62"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="centerY" secondItem="7TN-Ez-iLc" secondAttribute="centerY" type="default" id="jDn-Vs-pHh"/>
                                     <constraint firstItem="bVq-dU-hnS" firstAttribute="centerY" secondItem="7TN-Ez-iLc" secondAttribute="centerY" type="default" id="kQx-bz-fjf"/>
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="centerX" secondItem="GIU-Dz-jSR" secondAttribute="centerX" type="default" id="qhH-o4-sHV"/>
-                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="top" secondItem="Bdl-9u-OJz" secondAttribute="top" type="default" id="tgG-9I-Elb"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="playedSwitch" destination="bVq-dU-hnS" id="esg-ty-3wZ"/>

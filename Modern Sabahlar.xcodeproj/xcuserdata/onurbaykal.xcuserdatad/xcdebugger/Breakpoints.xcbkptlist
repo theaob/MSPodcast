@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Modern Sabahlar/MSTableViewController.m"
-         timestampString = "376677578.452053"
+         timestampString = "376690791.277551"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "302"
-         endingLineNumber = "302"
-         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
+         landmarkName = "-traverseElement:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Modern Sabahlar/MSTableViewController.m"
-         timestampString = "376677632.089199"
+         timestampString = "376690791.277551"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "301"
-         endingLineNumber = "301"
-         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
+         landmarkName = "-traverseElement:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,12 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Modern Sabahlar/MSTableViewController.m"
-         timestampString = "376677700.379497"
+         timestampString = "376690867.027489"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
-         landmarkName = "-parser:didEndElement:namespaceURI:qualifiedName:"
+         startingLineNumber = "155"
+         endingLineNumber = "155"
+         landmarkName = "-traverseElement:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

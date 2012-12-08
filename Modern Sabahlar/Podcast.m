@@ -11,14 +11,15 @@
 
 @implementation Podcast
 
-@dynamic date;
+@dynamic title;
 @dynamic isPlayed;
 @dynamic audioPath;
 @dynamic duration;
+@dynamic finished;
 
 - (NSString *) description
 {    
-    return [NSString stringWithFormat:@"Date: %@ isPlayed: %@  path: %@ duration: %@", self.date, self.isPlayed, self.audioPath, self.duration, nil];
+    return [NSString stringWithFormat:@"Title: %@ isPlayed: %@  path: %@ duration: %@ finished: %@", self.title, self.isPlayed, self.audioPath, self.duration, self.finished, nil];
 }
 
 @end

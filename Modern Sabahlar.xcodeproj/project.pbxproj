@@ -24,6 +24,9 @@
 		50A1E2CA166E91D10045B1E7 /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */; };
 		50A1E2D0166E962F0045B1E7 /* MSUnplayedSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */; };
 		50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2D2166E968E0045B1E7 /* Podcast.m */; };
+		50BB95BC1673C05500410088 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BB95BB1673C05500410088 /* AVFoundation.framework */; };
+		50BB95C61673D12E00410088 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BB95C31673D12E00410088 /* TBXML.m */; };
+		50BB95C81673D12E00410088 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BB95C51673D12E00410088 /* TBXML+HTTP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,11 @@
 		50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSUnplayedSwitch.m; sourceTree = "<group>"; };
 		50A1E2D1166E968E0045B1E7 /* Podcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Podcast.h; sourceTree = "<group>"; };
 		50A1E2D2166E968E0045B1E7 /* Podcast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Podcast.m; sourceTree = "<group>"; };
+		50BB95BB1673C05500410088 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		50BB95C01673D11C00410088 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		50BB95C21673D11C00410088 /* TBXML+HTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBXML+HTTP.h"; sourceTree = "<group>"; };
+		50BB95C31673D12E00410088 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		50BB95C51673D12E00410088 /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BB95BC1673C05500410088 /* AVFoundation.framework in Frameworks */,
 				50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */,
 				50A1E2A5166E90100045B1E7 /* Foundation.framework in Frameworks */,
 				50A1E2A7166E90100045B1E7 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +82,7 @@
 		50A1E293166E90100045B1E7 = {
 			isa = PBXGroup;
 			children = (
+				50BB95BF1673D0E900410088 /* TBXML */,
 				50A1E2AA166E90100045B1E7 /* Modern Sabahlar */,
 				50A1E2A1166E90100045B1E7 /* Frameworks */,
 				50A1E29F166E90100045B1E7 /* Products */,
@@ -90,6 +100,7 @@
 		50A1E2A1166E90100045B1E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50BB95BB1673C05500410088 /* AVFoundation.framework */,
 				50A1E2A2166E90100045B1E7 /* UIKit.framework */,
 				50A1E2A4166E90100045B1E7 /* Foundation.framework */,
 				50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */,
@@ -132,6 +143,17 @@
 				50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50BB95BF1673D0E900410088 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				50BB95C01673D11C00410088 /* TBXML.h */,
+				50BB95C31673D12E00410088 /* TBXML.m */,
+				50BB95C51673D12E00410088 /* TBXML+HTTP.m */,
+				50BB95C21673D11C00410088 /* TBXML+HTTP.h */,
+			);
+			name = TBXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +231,8 @@
 				50A1E2D3166E968E0045B1E7 /* Podcast.m in Sources */,
 				5030D0E2167326CA008733D3 /* MSPodcastCell.m in Sources */,
 				5030D0E61673361B008733D3 /* MSNavigationViewController.m in Sources */,
+				50BB95C61673D12E00410088 /* TBXML.m in Sources */,
+				50BB95C81673D12E00410088 /* TBXML+HTTP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

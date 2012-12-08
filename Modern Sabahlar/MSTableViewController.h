@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "MSUnplayedSwitch.h"
+#import "Podcast.h"
+#import "TBXML+HTTP.h"
 
 @interface MSTableViewController : UITableViewController <NSXMLParserDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController * fetchResultsController;
+@property (nonatomic, strong) TBXML * tbxmlParser;
+@property (nonatomic, strong) Podcast * parsedPodcast;
 
 @end

@@ -7,19 +7,9 @@
 //
 
 #import "MSTableViewController.h"
-#import "Podcast.h"
 #import "MSPodcastCell.h"
 
-@interface MSTableViewController ()
-
-@property NSXMLParser *parser;
-@property NSDate * latestPodcastDate;
-
-@end
-
 @implementation MSTableViewController
-
-@synthesize parser = _parser;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,65 +32,9 @@
         abort();
     }
     
-    NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
-    
-    NSEntityDescription * entity = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
-    
-    [fetchRequest setEntity:entity];
-    
-    NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    
-    [fetchRequest setSortDescriptors:[[NSArray alloc] initWithObjects:sorter, nil]];
-    
-    //[fetchRequest setFetchLimit:1];
-    
-    NSArray * fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    if(fetchedObjects.count < 1)
-    {
-        NSLog(@"There were no previous podcasts!");
-        if( error != nil)
-            NSLog(@"%@", error);
-        _latestPodcastDate = [NSDate distantPast];
-    }
-    else
-    {
-        _latestPodcastDate = [[fetchedObjects objectAtIndex:0] date];
-    }
-    
-    
-        
-                                    
-    
-//    _latestPodcastDate = [[self fetchResultsController] fetchRequest];
-        
-//    Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
-//    p.date = [NSDate date];
-//    
-//    
 
     
-//    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
-    
-    NSString * podcastString = @"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1";
-    
-    if(!_parser)
-    {
-        _parser = [[NSXMLParser alloc] initWithContentsOfURL:[[NSURL alloc] initWithString:podcastString]];
-    }
-    
-    [_parser setDelegate:self];
-    
-    BOOL success = [_parser parse];
-    
-    if(success)
-    {
-        NSLog(@"Parsing Successful");
-    }
-    else
-    {
-        NSLog(@"Parsing Failed!");
-    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -138,49 +72,10 @@
     
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     
-    cell.podcastLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:cellPodcast.date]];
+    cell.podcastLabel.text = cellPodcast.title;
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -196,113 +91,93 @@
 }
 
 
-#pragma mark - XML Parsing delegation
+#pragma mark - XML Traversing
 
-static BOOL startedItem = NO;
-static BOOL startedMediaAddress = NO;
-static BOOL startedTitle = NO;
-static BOOL startedDuration = NO;
-static BOOL newItems = NO;
-
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+- (BOOL) retreivePodcastsFromXML
 {
-    if([elementName isEqualToString:@"item"])
-    {
-        startedItem = YES;
-    }
-    else if([elementName isEqualToString:@"guid"])
-    {
-        startedMediaAddress = YES;
-    }
-    else if( [elementName isEqualToString:@"title"] )
-    {
-        startedTitle = YES;
-    }
-    else if( [elementName isEqualToString:@"itunes:duration"])
-    {
-        startedDuration = YES;
-    }
-}
-
-static NSString * path;
-static NSString * duration;
-
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
-{
-    if( startedMediaAddress )
-    {
-        path = [NSString stringWithFormat:@"%@%@",path, string];
-    }
-    else if(startedTitle)
-    {
-        
-        path = [[NSString alloc] init];
-        duration = [[NSString alloc] init];
-        
-    }
-    else if(startedDuration)
-    {
-        path = [NSString stringWithFormat:@"%@%@", duration, string];
-    }
-}
-
-
-
--(void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
-{
-    static Podcast * podcast;
-    static NSDateFormatter * formatter;
+    static BOOL isSuccessful = NO;
+    //    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
     
-    if(podcast == nil)
-    {
-        podcast = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
-    }
+    NSString * podcastString = @"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1";
     
-    if([elementName isEqualToString:@"item"])
-    {
-        startedItem = NO;
-        
-        if(podcast.date > _latestPodcastDate)
-        {
-            if(podcast.date != nil)
-            {
-                podcast.isPlayed = NO;
-                [self.managedObjectContext insertObject:podcast];
-                newItems = YES;
-            }
-        }
-        
-        //podcast = nil;
-    }
-    else if([elementName isEqualToString:@"guid"])
-    {
-        podcast.audioPath = path;
-        startedMediaAddress = NO;
-    }
-    else if( [elementName isEqualToString:@"title"] )
-    {
-        if( formatter == nil)
-        {
-            formatter = [[NSDateFormatter alloc] init];
-        }
-        if( path != nil)
-        {
-            podcast.date = [formatter dateFromString:path];
-            startedTitle = NO;
-        }
-    }
-    else if( [elementName isEqualToString:@"itunes:duration"])
-    {
-        podcast.duration = path;
-        startedDuration = NO;
-    }
-    else if( [elementName isEqualToString:@"channel"])
-    {
-        if(newItems)
-            [self saveData];
-    }
+    TBXMLSuccessBlock successBlock = ^(TBXML *tbxmlDocument) {
+        // If TBXML found a root node, process element and iterate all children
+        if (tbxmlDocument.rootXMLElement)
+            [self traverseElement:tbxmlDocument.rootXMLElement];
+        isSuccessful = YES;
+    };
+    
+    
+    TBXMLFailureBlock failureBlock = ^(TBXML *tbxmlDocument, NSError * error) {
+        NSLog(@"Parsing error! %@ %@", [error localizedDescription], [error userInfo]);
+    };
+    
+    _tbxmlParser = [[TBXML alloc] initWithURL:[NSURL URLWithString:podcastString] success:successBlock failure:failureBlock];
+    
+    return isSuccessful;
 }
 
+static NSString * titleString;
+static NSString * durationString;
+static NSString * audioAddressString;
+
+- (void) traverseElement:(TBXMLElement *) rootElement
+{
+    int counter = 1;
+    
+    NSEntityDescription * ped = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
+    
+    TBXMLElement * firstItem;
+    TBXMLElement * dataElement;
+    
+    firstItem = [TBXML childElementNamed:@"channel" parentElement:rootElement];
+    
+    firstItem = [TBXML childElementNamed:@"item" parentElement:firstItem];
+    
+    while(firstItem != nil)
+    {
+        dataElement = [TBXML childElementNamed:@"title" parentElement:firstItem];
+        
+        titleString = [TBXML textForElement:dataElement];
+        
+        dataElement = [TBXML childElementNamed:@"guid" parentElement:firstItem];
+        
+        audioAddressString = [TBXML textForElement:dataElement];
+        
+        dataElement = [TBXML childElementNamed:@"itunes:duration" parentElement:firstItem];
+        
+        durationString = [TBXML textForElement:dataElement];
+        
+        _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
+        
+        _parsedPodcast.title = titleString;
+        _parsedPodcast.duration = durationString;
+        _parsedPodcast.audioPath = audioAddressString;
+        _parsedPodcast.finished = NO;
+        _parsedPodcast.isPlayed = NO;
+        
+        [_managedObjectContext insertObject:_parsedPodcast];
+        
+        
+        firstItem = firstItem->nextSibling;
+        counter++;
+    }
+    
+    NSError * error;
+    
+    if(![_managedObjectContext save:&error])
+    {
+        NSLog(@"There was an error while saving!");
+    }
+    else
+    {
+    
+        [self.tableView reloadData];
+        
+    }
+    
+    NSLog(@"%d", counter);
+}
 
 #pragma mark - Core Data Methods
 
@@ -319,14 +194,14 @@ static NSString * duration;
         
         [request setEntity:entity];
         
-        NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+        NSSortDescriptor * sorter = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:NO];
         
         [request setSortDescriptors:[[NSArray alloc] initWithObjects:sorter, nil]];
         
         
         
         
-        _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"date" cacheName:nil];
+        _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"title" cacheName:nil];
         
         return _fetchResultsController;
     }
@@ -340,8 +215,15 @@ static NSString * duration;
         NSLog(@"Could not save to managed object context!");
         NSLog(@"%@", error);
     }
+    else
+    {
+        NSLog(@"Successfully saved new data!");
+    }
 }
 
-- (IBAction)downloadButton:(id)sender {
+- (IBAction)downloadButton:(id)sender
+{
+    AVAudioPlayer * audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2847&dummy.mp3?"] error:nil];
+    [audioPlayer play];
 }
 @end
