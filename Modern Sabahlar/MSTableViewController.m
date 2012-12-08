@@ -41,10 +41,16 @@
         abort();
     }
         
-    Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
-    p.date = [NSDate date];
+//    Podcast * p = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
+//    p.date = [NSDate date];
+//    
+//    
+//    if(![self.managedObjectContext save:&error])
+//    {
+//        NSLog(@"Save error!");
+//    }
     
-    [self.managedObjectContext insertObject:podcast];
+    
 
 //    NSURL * podcastURL;
 //    
@@ -108,7 +114,11 @@
     
     Podcast * cellPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
     
-    cell.podcastLabel.text = cellPodcast.date.description;
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    cell.podcastLabel.text = [NSString stringWithFormat:@"%@", [dateFormatter stringFromDate:cellPodcast.date]];
     
     return cell;
 }
@@ -189,37 +199,43 @@ static BOOL startedTitle = NO;
 }
 
 static NSString * path;
-static Podcast * podcast;
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
     if( startedMediaAddress )
     {
         path = [NSString stringWithFormat:@"%@%@",path, string];
-        podcast.audioPath = path;
     }
     else if(startedTitle)
     {
         
         path = [[NSString alloc] init];
-        podcast = [NSEntityDescription insertNewObjectForEntityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
         
     }
 }
 
+
+
 -(void) parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
+    static Podcast * podcast;
+    static NSDateFormatter * formatter;
     if([elementName isEqualToString:@"item"])
     {
         startedItem = NO;
     }
     else if([elementName isEqualToString:@"guid"])
     {
-        NSLog(@"%@", path);
+        podcast.audioPath = path;
         startedMediaAddress = NO;
     }
     else if( [elementName isEqualToString:@"title"] )
     {
+        if( formatter == nil)
+        {
+            formatter = [[NSDateFormatter alloc] init];
+        }
+        podcast.date = [formatter dateFromString:path];
         startedTitle = NO;
     }
 }
