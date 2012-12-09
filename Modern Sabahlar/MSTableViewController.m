@@ -15,14 +15,17 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        
     }
+    [self.tableView.dataSource self];
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.shouldSaveData = NO;
     
     NSError * error = nil;
     
@@ -50,6 +53,7 @@
     if(fetchedObjects.count < 1)
     {
         [self retreivePodcastsFromXML];
+        self.shouldSaveData = YES;
     }
 
 }
@@ -146,16 +150,12 @@ static NSString * audioAddressString;
 
 - (void) traverseElement:(TBXMLElement *) rootElement
 {
-    int counter = 1;
-    
-    NSString * formatString = @"dd/MM/yy";
     
     NSEntityDescription * ped = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
     
-    TBXMLElement * firstItem;
     TBXMLElement * dataElement;
     
-    firstItem = [TBXML childElementNamed:@"channel" parentElement:rootElement];
+    TBXMLElement * firstItem = [TBXML childElementNamed:@"channel" parentElement:rootElement];
     
     firstItem = [TBXML childElementNamed:@"item" parentElement:firstItem];
     
@@ -180,11 +180,7 @@ static NSString * audioAddressString;
         {
             _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
             
-            NSDate * date = [MSTableViewController parseDate:titleString format:formatString];
-            
-            NSLog(@"%@ %@", date, titleString);
-            
-            _parsedPodcast.title = date;
+            _parsedPodcast.title = [MSTableViewController parseDate:titleString format:@"dd/MM/yy"];
             _parsedPodcast.duration = durationString;
             _parsedPodcast.audioPath = audioAddressString;
             _parsedPodcast.finished = NO;
@@ -194,7 +190,6 @@ static NSString * audioAddressString;
         }
 
         firstItem = firstItem->nextSibling;
-        counter++;
     }
     
     NSError * error;
@@ -204,7 +199,7 @@ static NSString * audioAddressString;
         NSLog(@"There was an error while saving! %@", error);
     }
     
-    NSLog(@"%d", counter);
+    [self.tableView reloadData];
 }
 
 #pragma mark - Core Data Methods
@@ -232,20 +227,6 @@ static NSString * audioAddressString;
         _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"title" cacheName:nil];
         
         return _fetchResultsController;
-    }
-}
-
-- (void) saveData
-{
-    NSError * error = nil;
-    if(![self.managedObjectContext save:&error])
-    {
-        NSLog(@"Could not save to managed object context!");
-        NSLog(@"%@", error);
-    }
-    else
-    {
-        NSLog(@"Successfully saved new data!");
     }
 }
 

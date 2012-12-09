@@ -15,10 +15,12 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+MSTableViewController * mstvc;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
-    MSTableViewController * mstvc = (MSTableViewController *)[[nav viewControllers] objectAtIndex:0];
+    mstvc = (MSTableViewController *)[[nav viewControllers] objectAtIndex:0];
     mstvc.managedObjectContext = self.managedObjectContext;
     
     /*self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -39,6 +41,21 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSError * error = nil;
+    if(mstvc.shouldSaveData)
+    {
+        if(![self.managedObjectContext save:&error])
+        {
+            NSLog(@"Could not save to managed object context!");
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSLog(@"Successfully saved new data!");
+            mstvc.shouldSaveData = NO;
+        }
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

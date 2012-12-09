@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Table View Controller - Modern Sabahlar-->
         <scene sceneID="jP3-OH-E0f">
             <objects>
                 <tableViewController id="ckI-Zz-l0r" customClass="MSTableViewController" sceneMemberID="viewController">
@@ -79,7 +79,7 @@
                             <outlet property="delegate" destination="ckI-Zz-l0r" id="gmb-SM-QQT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ikg-1T-kLp"/>
+                    <navigationItem key="navigationItem" title="Modern Sabahlar" id="Ikg-1T-kLp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWD-mm-2RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,11 +91,16 @@
                 <navigationController id="G4E-Fq-grY" customClass="MSNavigationViewController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7M4-I9-dgf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UeJ-UH-yFU">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="UeJ-UH-yFU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2DO-rA-JpY">
+                        <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ckI-Zz-l0r" kind="relationship" relationship="rootViewController" id="9Af-kw-tKm"/>
                     </connections>

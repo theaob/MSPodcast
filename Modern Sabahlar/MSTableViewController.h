@@ -12,12 +12,13 @@
 #import "Podcast.h"
 #import "TBXML+HTTP.h"
 
-@interface MSTableViewController : UITableViewController <NSXMLParserDelegate>
+@interface MSTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext * managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController * fetchResultsController;
 @property (nonatomic, strong) TBXML * tbxmlParser;
 @property (nonatomic, strong) Podcast * parsedPodcast;
+@property (nonatomic) BOOL shouldSaveData;
 
 - (IBAction)downloadButtonPressed:(UIButton *)sender;
 

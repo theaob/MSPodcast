@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		5030D0E2167326CA008733D3 /* MSPodcastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030D0E1167326CA008733D3 /* MSPodcastCell.m */; };
 		5030D0E61673361B008733D3 /* MSNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5030D0E51673361A008733D3 /* MSNavigationViewController.m */; };
+		504E94F616746B4C00B5531B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94F516746B4C00B5531B /* Default.png */; };
+		504E94F916746CBE00B5531B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94F816746CBE00B5531B /* Default-568h@2x.png */; };
+		504E94FB16746CC300B5531B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94FA16746CC300B5531B /* Default@2x.png */; };
+		504E94FE16749EC900B5531B /* MSFetchedResultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504E94FD16749EC900B5531B /* MSFetchedResultsController.m */; };
 		50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A2166E90100045B1E7 /* UIKit.framework */; };
 		50A1E2A5166E90100045B1E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A4166E90100045B1E7 /* Foundation.framework */; };
 		50A1E2A7166E90100045B1E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */; };
@@ -16,9 +20,6 @@
 		50A1E2AF166E90100045B1E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2AD166E90100045B1E7 /* InfoPlist.strings */; };
 		50A1E2B1166E90100045B1E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2B0166E90100045B1E7 /* main.m */; };
 		50A1E2B5166E90100045B1E7 /* MSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2B4166E90100045B1E7 /* MSAppDelegate.m */; };
-		50A1E2B7166E90100045B1E7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2B6166E90100045B1E7 /* Default.png */; };
-		50A1E2B9166E90100045B1E7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2B8166E90100045B1E7 /* Default@2x.png */; };
-		50A1E2BB166E90100045B1E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */; };
 		50A1E2BE166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2BC166E90100045B1E7 /* Modern_Sabahlar.xcdatamodeld */; };
 		50A1E2C5166E913E0045B1E7 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */; };
 		50A1E2CA166E91D10045B1E7 /* MSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */; };
@@ -36,6 +37,11 @@
 		5030D0E1167326CA008733D3 /* MSPodcastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPodcastCell.m; sourceTree = "<group>"; };
 		5030D0E41673361A008733D3 /* MSNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNavigationViewController.h; sourceTree = "<group>"; };
 		5030D0E51673361A008733D3 /* MSNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNavigationViewController.m; sourceTree = "<group>"; };
+		504E94F516746B4C00B5531B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		504E94F816746CBE00B5531B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		504E94FA16746CC300B5531B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		504E94FC16749EC900B5531B /* MSFetchedResultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFetchedResultsController.h; sourceTree = "<group>"; };
+		504E94FD16749EC900B5531B /* MSFetchedResultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFetchedResultsController.m; sourceTree = "<group>"; };
 		50A1E29E166E90100045B1E7 /* MS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50A1E2A4166E90100045B1E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -47,9 +53,6 @@
 		50A1E2B2166E90100045B1E7 /* Modern Sabahlar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Modern Sabahlar-Prefix.pch"; sourceTree = "<group>"; };
 		50A1E2B3166E90100045B1E7 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		50A1E2B4166E90100045B1E7 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
-		50A1E2B6166E90100045B1E7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		50A1E2B8166E90100045B1E7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		50A1E2BD166E90100045B1E7 /* Modern_Sabahlar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modern_Sabahlar.xcdatamodel; sourceTree = "<group>"; };
 		50A1E2C4166E913E0045B1E7 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		50A1E2C8166E91D10045B1E7 /* MSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSTableViewController.h; sourceTree = "<group>"; };
@@ -131,6 +134,8 @@
 				50A1E2CF166E962F0045B1E7 /* MSUnplayedSwitch.m */,
 				5030D0E0167326CA008733D3 /* MSPodcastCell.h */,
 				5030D0E1167326CA008733D3 /* MSPodcastCell.m */,
+				504E94FC16749EC900B5531B /* MSFetchedResultsController.h */,
+				504E94FD16749EC900B5531B /* MSFetchedResultsController.m */,
 			);
 			path = "Modern Sabahlar";
 			sourceTree = "<group>";
@@ -138,15 +143,15 @@
 		50A1E2AB166E90100045B1E7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				504E94F816746CBE00B5531B /* Default-568h@2x.png */,
+				504E94FA16746CC300B5531B /* Default@2x.png */,
+				504E94F516746B4C00B5531B /* Default.png */,
 				50BB95D11673E35400410088 /* ms114.png */,
 				50BB95CF1673E32500410088 /* ms57.png */,
 				50A1E2AC166E90100045B1E7 /* Modern Sabahlar-Info.plist */,
 				50A1E2AD166E90100045B1E7 /* InfoPlist.strings */,
 				50A1E2B0166E90100045B1E7 /* main.m */,
 				50A1E2B2166E90100045B1E7 /* Modern Sabahlar-Prefix.pch */,
-				50A1E2B6166E90100045B1E7 /* Default.png */,
-				50A1E2B8166E90100045B1E7 /* Default@2x.png */,
-				50A1E2BA166E90100045B1E7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -215,12 +220,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				50A1E2AF166E90100045B1E7 /* InfoPlist.strings in Resources */,
-				50A1E2B7166E90100045B1E7 /* Default.png in Resources */,
-				50A1E2B9166E90100045B1E7 /* Default@2x.png in Resources */,
-				50A1E2BB166E90100045B1E7 /* Default-568h@2x.png in Resources */,
 				50A1E2C5166E913E0045B1E7 /* iPhone.storyboard in Resources */,
 				50BB95D01673E32500410088 /* ms57.png in Resources */,
 				50BB95D21673E35400410088 /* ms114.png in Resources */,
+				504E94F616746B4C00B5531B /* Default.png in Resources */,
+				504E94F916746CBE00B5531B /* Default-568h@2x.png in Resources */,
+				504E94FB16746CC300B5531B /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +246,7 @@
 				5030D0E61673361B008733D3 /* MSNavigationViewController.m in Sources */,
 				50BB95C61673D12E00410088 /* TBXML.m in Sources */,
 				50BB95C81673D12E00410088 /* TBXML+HTTP.m in Sources */,
+				504E94FE16749EC900B5531B /* MSFetchedResultsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
