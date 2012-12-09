@@ -22,8 +22,8 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="29" id="bP7-pO-UDo"/>
                                                 <constraint firstAttribute="height" constant="28" id="gJb-hc-rad"/>
-                                                <constraint firstAttribute="width" constant="29" id="uXA-iF-oMp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                             <state key="normal" title="DL">
@@ -39,38 +39,44 @@
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-Ez-iLc">
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="158" id="Ajq-VV-T0j"/>
                                                 <constraint firstAttribute="height" constant="21" id="tPZ-Ag-cH1"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVq-dU-hnS" customClass="MSUnplayedSwitch">
-                                            <color key="onTintColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </switch>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zh-Mm-bnB">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="116" id="eI3-ZO-Xfo"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muA-0D-s6N" customClass="GSProgressView">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="muA-0D-s6N" secondAttribute="bottom" constant="24" id="7tx-OF-27z"/>
                                     <constraint firstAttribute="trailing" secondItem="Bdl-9u-OJz" secondAttribute="trailing" constant="20" type="default" id="93C-EC-p91"/>
-                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="20" type="default" id="CvJ-Fh-7kK"/>
-                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="11" id="EMe-EO-K3G"/>
-                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="S0o-Xh-zU3"/>
-                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="16" id="Y7y-bD-LMO"/>
-                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="leading" type="default" id="YuC-qH-wIe"/>
-                                    <constraint firstItem="bVq-dU-hnS" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="oyL-OY-NGf"/>
-                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="centerX" secondItem="GIU-Dz-jSR" secondAttribute="centerX" type="default" id="qhH-o4-sHV"/>
-                                    <constraint firstAttribute="bottom" secondItem="5zh-Mm-bnB" secondAttribute="bottom" constant="10" id="wQA-Fm-un9"/>
+                                    <constraint firstItem="muA-0D-s6N" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="28" id="DEX-0R-rwT"/>
+                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Lki-tI-8Gr"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="baseline" secondItem="Bdl-9u-OJz" secondAttribute="baseline" type="default" id="OZ0-UR-Qaw"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="33" id="QZZ-MO-tTm"/>
+                                    <constraint firstItem="muA-0D-s6N" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="15" id="WWb-U4-ehX"/>
+                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="centerY" secondItem="Bdl-9u-OJz" secondAttribute="centerY" type="default" id="giO-wV-3oj"/>
+                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ieu-bJ-vef"/>
+                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="leading" secondItem="muA-0D-s6N" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="nXa-7Z-5Vt"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="lengthLabel" destination="5zh-Mm-bnB" id="IKh-8d-ivj"/>
-                                    <outlet property="playedSwitch" destination="bVq-dU-hnS" id="esg-ty-3wZ"/>
                                     <outlet property="podcastLabel" destination="7TN-Ez-iLc" id="ZH9-Gp-vA3"/>
+                                    <outlet property="progressView" destination="muA-0D-s6N" id="7t1-Kg-Hs8"/>
+                                    <segue destination="56g-qA-Rah" kind="modal" id="dpq-NI-hsl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -83,7 +89,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWD-mm-2RR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249" y="5"/>
+            <point key="canvasLocation" x="1102" y="5"/>
+        </scene>
+        <!--View Controller - Title-->
+        <scene sceneID="tic-Wj-Jaq">
+            <objects>
+                <viewController id="56g-qA-Rah" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qot-ol-hfn">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WF-YS-HcY">
+                                <items>
+                                    <barButtonItem title="Close" id="fbt-ua-uGx"/>
+                                </items>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0WF-YS-HcY" firstAttribute="leading" secondItem="Qot-ol-hfn" secondAttribute="leading" type="default" id="QVJ-xH-s1J"/>
+                            <constraint firstItem="0WF-YS-HcY" firstAttribute="trailing" secondItem="Qot-ol-hfn" secondAttribute="trailing" type="default" id="j3V-Hm-Vxd"/>
+                            <constraint firstItem="0WF-YS-HcY" firstAttribute="top" secondItem="Qot-ol-hfn" secondAttribute="top" type="default" id="kHs-Ju-tmw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="PJT-at-qR9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpH-NL-mfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1487" y="5"/>
         </scene>
         <!--Navigation View Controller - Item-->
         <scene sceneID="KW0-BO-9G3">
@@ -111,6 +145,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="GSProgressView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GSProgressView.h"/>
+        </class>
         <class className="MSNavigationViewController" superclassName="UINavigationController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSNavigationViewController.h"/>
         </class>
@@ -118,8 +155,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MSPodcastCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="lengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playedSwitch" candidateClass="MSUnplayedSwitch"/>
                 <relationship kind="outlet" name="podcastLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="progressView" candidateClass="GSProgressView"/>
             </relationships>
         </class>
         <class className="MSTableViewController" superclassName="UITableViewController">
@@ -127,9 +164,6 @@
             <relationships>
                 <relationship kind="action" name="downloadButtonPressed:" candidateClass="UIButton"/>
             </relationships>
-        </class>
-        <class className="MSUnplayedSwitch" superclassName="UISwitch">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MSUnplayedSwitch.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

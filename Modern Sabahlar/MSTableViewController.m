@@ -8,6 +8,7 @@
 
 #import "MSTableViewController.h"
 #import "MSPodcastCell.h"
+#import "GSProgressView.h"
 
 @implementation MSTableViewController
 
@@ -110,6 +111,28 @@
         cell.lengthLabel.text = cellPodcast.duration;
     }
     
+    GSProgressView * p= [[GSProgressView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    
+    p.color = [UIColor blueColor];
+    
+    if( [cellPodcast.isPlayed isEqualToNumber:[[NSNumber alloc] initWithBool:NO]] || cellPodcast.isPlayed == nil)
+    {
+        p.progress = 1.0;
+    }
+    else
+    {
+        if([cellPodcast.finished isEqualToNumber:[[NSNumber alloc] initWithBool:YES]])
+        {
+            p.progress = 0;
+        }
+        else
+        {
+            p.progress = 0.5;
+        }
+    }
+    
+    [cell.progressView addSubview:p];
+    
     return cell;
 }
 
@@ -117,14 +140,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-      *detailViewController = [[ alloc] initWithNibName:@"" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
     Podcast * selectedPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
     
     NSString * podcastPath = [[NSString alloc] initWithString:selectedPodcast.audioPath];
@@ -132,7 +147,10 @@
     NSURL * podcastURL = [[NSURL alloc] initWithString:podcastPath];
     
     [self streamAudioAt:podcastURL];
-
+    
+    selectedPodcast.isPlayed = [NSNumber numberWithBool:YES];
+    
+    [self saveData];
 }
 
 
@@ -232,12 +250,17 @@ static NSString * audioAddressString;
         firstItem = firstItem->nextSibling;
     }
     
+    [self saveData];
+}
+
+- (void) saveData
+{
     NSError * error;
     
-    /*if(![_managedObjectContext save:&error])
+    if(![_managedObjectContext save:&error])
     {
         NSLog(@"There was an error while saving! %@", error);
-    }*/
+    }
 }
 
 #pragma mark - Core Data Methods
