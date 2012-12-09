@@ -11,6 +11,7 @@
 #import "MSUnplayedSwitch.h"
 #import "Podcast.h"
 #import "TBXML+HTTP.h"
+#import "MBProgressHUD.h"
 
 @interface MSTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 

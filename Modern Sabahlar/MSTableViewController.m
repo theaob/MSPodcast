@@ -17,7 +17,6 @@
     if (self) {
         
     }
-    [self.tableView.dataSource self];
     return self;
 }
 
@@ -25,15 +24,16 @@
 {
     [super viewDidLoad];
     
+    [self.tableView setDataSource:self];
+    
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.Mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Loading";
+    
     self.shouldSaveData = NO;
     
     NSError * error = nil;
-    
-    if( ![[self fetchResultsController] performFetch:&error] )
-    {
-        NSLog(@"Error! %@", error);
-        abort();
-    }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
@@ -55,6 +55,10 @@
         [self retreivePodcastsFromXML];
         self.shouldSaveData = YES;
     }
+    else
+    {
+        [self fetchData];
+    }
 
 }
 
@@ -62,6 +66,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.fetchResultsController = nil;
 }
 
 #pragma mark - Table view data source
@@ -80,6 +85,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"podcastCell";
+    
     MSPodcastCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if(cell == nil)
@@ -118,8 +124,38 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    Podcast * selectedPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
+    
+    NSString * podcastPath = [[NSString alloc] initWithString:selectedPodcast.audioPath];
+    
+    NSURL * podcastURL = [[NSURL alloc] initWithString:podcastPath];
+    
+    [self streamAudioAt:podcastURL];
+
 }
 
+
+- (void) fetchData
+{
+    NSError * error;
+    
+    if( ![[self fetchResultsController] performFetch:&error] )
+    {
+        NSLog(@"Error! %@", error);
+        abort();
+    }
+    else
+    {
+        [self performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void) reloadData
+{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self.tableView reloadData];
+}
 
 #pragma mark - XML Traversing
 
@@ -128,16 +164,18 @@
     //    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
     
     NSString * podcastString = @"http://www.radyoodtu.com.tr/podcasts/podcasts.asp?chid=1";
-    
+
     TBXMLSuccessBlock successBlock = ^(TBXML *tbxmlDocument) {
         // If TBXML found a root node, process element and iterate all children
         if (tbxmlDocument.rootXMLElement)
             [self traverseElement:tbxmlDocument.rootXMLElement];
+        [self fetchData];
     };
     
     
     TBXMLFailureBlock failureBlock = ^(TBXML *tbxmlDocument, NSError * error) {
         NSLog(@"Parsing error! %@ %@", [error localizedDescription], [error userInfo]);
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     };
     
     _tbxmlParser = [[TBXML alloc] initWithURL:[NSURL URLWithString:podcastString] success:successBlock failure:failureBlock];
@@ -169,6 +207,8 @@ static NSString * audioAddressString;
         
         audioAddressString = [TBXML textForElement:dataElement];
         
+        audioAddressString = [audioAddressString stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
+        
         dataElement = [TBXML childElementNamed:@"itunes:duration" parentElement:firstItem];
         
         durationString = [TBXML textForElement:dataElement];
@@ -194,12 +234,10 @@ static NSString * audioAddressString;
     
     NSError * error;
     
-    if(![_managedObjectContext save:&error])
+    /*if(![_managedObjectContext save:&error])
     {
         NSLog(@"There was an error while saving! %@", error);
-    }
-    
-    [self.tableView reloadData];
+    }*/
 }
 
 #pragma mark - Core Data Methods
@@ -221,9 +259,6 @@ static NSString * audioAddressString;
         
         [request setSortDescriptors:[[NSArray alloc] initWithObjects:sorter, nil]];
         
-        
-        
-        
         _fetchResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"title" cacheName:nil];
         
         return _fetchResultsController;
@@ -244,8 +279,13 @@ static AVPlayer * audioPlayer;
     NSString * mp3Path = @"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2848&dummy.mp3?";
     NSURL * mp3URL = [[NSURL alloc] initWithString:mp3Path];
     
-    audioPlayer = [[AVPlayer alloc] initWithURL:mp3URL];
+    [self streamAudioAt:mp3URL];
+}
 
+- (void)streamAudioAt:(NSURL *) url
+{
+    audioPlayer = [[AVPlayer alloc] initWithURL:url];
+    
     [audioPlayer play];
 }
 @end

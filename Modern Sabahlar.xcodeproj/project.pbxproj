@@ -29,6 +29,7 @@
 		50BB95C81673D12E00410088 /* TBXML+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BB95C51673D12E00410088 /* TBXML+HTTP.m */; };
 		50BB95D01673E32500410088 /* ms57.png in Resources */ = {isa = PBXBuildFile; fileRef = 50BB95CF1673E32500410088 /* ms57.png */; };
 		50BB95D21673E35400410088 /* ms114.png in Resources */ = {isa = PBXBuildFile; fileRef = 50BB95D11673E35400410088 /* ms114.png */; };
+		50E68ABB1674DADC0022CC82 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E68ABA1674DADC0022CC82 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		50BB95C51673D12E00410088 /* TBXML+HTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TBXML+HTTP.m"; sourceTree = "<group>"; };
 		50BB95CF1673E32500410088 /* ms57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ms57.png; path = ../ms57.png; sourceTree = "<group>"; };
 		50BB95D11673E35400410088 /* ms114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ms114.png; path = ../ms114.png; sourceTree = "<group>"; };
+		50E68AB91674DAD30022CC82 /* MBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		50E68ABA1674DADC0022CC82 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 		50A1E293166E90100045B1E7 = {
 			isa = PBXGroup;
 			children = (
+				50E68AB71674DABD0022CC82 /* MBProgressHUD */,
 				50BB95BF1673D0E900410088 /* TBXML */,
 				50A1E2AA166E90100045B1E7 /* Modern Sabahlar */,
 				50A1E2A1166E90100045B1E7 /* Frameworks */,
@@ -160,6 +164,15 @@
 				50BB95C21673D11C00410088 /* TBXML+HTTP.h */,
 			);
 			name = TBXML;
+			sourceTree = "<group>";
+		};
+		50E68AB71674DABD0022CC82 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				50E68AB91674DAD30022CC82 /* MBProgressHUD.h */,
+				50E68ABA1674DADC0022CC82 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +254,7 @@
 				5030D0E61673361B008733D3 /* MSNavigationViewController.m in Sources */,
 				50BB95C61673D12E00410088 /* TBXML.m in Sources */,
 				50BB95C81673D12E00410088 /* TBXML+HTTP.m in Sources */,
+				50E68ABB1674DADC0022CC82 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
