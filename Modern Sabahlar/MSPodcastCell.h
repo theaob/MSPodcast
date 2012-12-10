@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MSUnplayedSwitch.h"
 #import "GSProgressView.h"
 
 @interface MSPodcastCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *podcastLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lengthLabel;
-@property (weak, nonatomic) IBOutlet GSProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UIImageView *progressImageView;
 
 @end

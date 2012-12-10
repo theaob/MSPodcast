@@ -30,7 +30,7 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.Mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Loading";
+    hud.labelText = NSLocalizedString(@"Loading",@"Displayed when fetching podcast XML");
     
     self.shouldSaveData = NO;
     
@@ -48,7 +48,7 @@
     
     NSArray *fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
     if (fetchedObjects == nil) {
-        NSLog(@"Error! %@", error);
+        NSLog(@"%@! %@",NSLocalizedString(@"Error!", @"Added to log when cannot fetch objects from database"), error);
     }
     
     if(fetchedObjects.count < 1)
@@ -111,27 +111,22 @@
         cell.lengthLabel.text = cellPodcast.duration;
     }
     
-    GSProgressView * p= [[GSProgressView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    
-    p.color = [UIColor blueColor];
-    
     if( [cellPodcast.isPlayed isEqualToNumber:[[NSNumber alloc] initWithBool:NO]] || cellPodcast.isPlayed == nil)
     {
-        p.progress = 1.0;
+        cell.progressImageView.image = [UIImage imageNamed:@"unplayed-icon.png"];
     }
     else
     {
         if([cellPodcast.finished isEqualToNumber:[[NSNumber alloc] initWithBool:YES]])
         {
-            p.progress = 0;
+            //p.progress = 0;
         }
         else
         {
-            p.progress = 0.5;
+            cell.progressImageView.image = [UIImage imageNamed:@"half-played-icon.png"];
         }
     }
-    
-    [cell.progressView addSubview:p];
+
     
     return cell;
 }
@@ -146,11 +141,16 @@
     
     NSURL * podcastURL = [[NSURL alloc] initWithString:podcastPath];
     
-    [self streamAudioAt:podcastURL];
+    /*[self streamAudioAt:podcastURL];*/
     
     selectedPodcast.isPlayed = [NSNumber numberWithBool:YES];
     
     [self saveData];
+    
+    MPMusicPlayerController * player = [MPMusicPlayerController applicationMusicPlayer];
+    
+    [player setShuffleMode:MPMusicShuffleModeOff];
+    
 }
 
 
@@ -160,7 +160,7 @@
     
     if( ![[self fetchResultsController] performFetch:&error] )
     {
-        NSLog(@"Error! %@", error);
+        NSLog(@"%@! %@",NSLocalizedString(@"Error!", @"Added to log when cannot fetch objects from database"), error);
         abort();
     }
     else
@@ -259,7 +259,7 @@ static NSString * audioAddressString;
     
     if(![_managedObjectContext save:&error])
     {
-        NSLog(@"There was an error while saving! %@", error);
+        NSLog(@"%@! %@",NSLocalizedString(@"There was an error while saving!", @"Added to log when cannot save objects to database"), error);
     }
 }
 

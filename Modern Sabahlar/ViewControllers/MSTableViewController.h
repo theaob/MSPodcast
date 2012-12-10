@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "MSUnplayedSwitch.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import "Podcast.h"
 #import "TBXML+HTTP.h"
 #import "MBProgressHUD.h"

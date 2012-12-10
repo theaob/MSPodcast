@@ -47,12 +47,12 @@ MSTableViewController * mstvc;
     {
         if(![self.managedObjectContext save:&error])
         {
-            NSLog(@"Could not save to managed object context!");
+            NSLog(NSLocalizedString(@"Couldn't save to managed object context", @"Added to log when cannot save podcasts"));
             NSLog(@"%@", error);
         }
         else
         {
-            NSLog(@"Successfully saved new data!");
+            NSLog(NSLocalizedString(@"Successfully saved new data!",@"Added to log when saved successfully"));
             mstvc.shouldSaveData = NO;
         }
     }
