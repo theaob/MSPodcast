@@ -51,14 +51,20 @@
         NSLog(@"%@! %@",NSLocalizedString(@"Error!", @"Added to log when cannot fetch objects from database"), error);
     }
     
+    Podcast * latestPodcast;
+    
     if(fetchedObjects.count < 1)
     {
-        [self retreivePodcastsFromXML];
+        latestPodcast = [[Podcast alloc] initWithEntity:entity insertIntoManagedObjectContext:_managedObjectContext];
+        latestPodcast.title = [NSDate distantPast];
+        
+        [self retreivePodcastsFromXML:latestPodcast];
         self.shouldSaveData = YES;
     }
     else
     {
-        [self fetchData];
+        latestPodcast = [[self.fetchResultsController fetchedObjects] objectAtIndex:0];
+        [self retreivePodcastsFromXML:latestPodcast];
     }
 
 }
@@ -177,7 +183,7 @@
 
 #pragma mark - XML Traversing
 
-- (void) retreivePodcastsFromXML
+- (void) retreivePodcastsFromXML: (Podcast *)latestPodcast
 {
     //    NSString * podcastString = @"http://www.podcastgenerator.net/demo/pg/feed.xml";
     
@@ -186,7 +192,7 @@
     TBXMLSuccessBlock successBlock = ^(TBXML *tbxmlDocument) {
         // If TBXML found a root node, process element and iterate all children
         if (tbxmlDocument.rootXMLElement)
-            [self traverseElement:tbxmlDocument.rootXMLElement];
+            [self traverseElement:tbxmlDocument.rootXMLElement withLatestPodcast:latestPodcast];
         [self fetchData];
     };
     
@@ -204,7 +210,7 @@ static NSString * titleString;
 static NSString * durationString;
 static NSString * audioAddressString;
 
-- (void) traverseElement:(TBXMLElement *) rootElement
+- (void) traverseElement:(TBXMLElement *) rootElement withLatestPodcast:(Podcast *)latestPodcast
 {
     
     NSEntityDescription * ped = [NSEntityDescription entityForName:@"Podcast" inManagedObjectContext:_managedObjectContext];
@@ -238,13 +244,22 @@ static NSString * audioAddressString;
         {
             _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
             
-            _parsedPodcast.title = [MSTableViewController parseDate:titleString format:@"dd/MM/yy"];
+            NSDate * parsedPodcastDate = [MSTableViewController parseDate:titleString format:@"dd/MM/yy"];
+            
+            _parsedPodcast.title = parsedPodcastDate;
             _parsedPodcast.duration = durationString;
             _parsedPodcast.audioPath = audioAddressString;
             _parsedPodcast.finished = NO;
             _parsedPodcast.isPlayed = NO;
             
-            [_managedObjectContext insertObject:_parsedPodcast];
+            if(parsedPodcastDate < latestPodcast.title)
+            {
+                [_managedObjectContext insertObject:_parsedPodcast];
+            }
+            else
+            {
+                break;
+            }
         }
 
         firstItem = firstItem->nextSibling;

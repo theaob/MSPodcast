@@ -111,6 +111,7 @@
 		506DDF40167505FE0020222B /* status-bar-pattern-default@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "status-bar-pattern-default@2x.jpg"; path = "BWStatusBarOverlay/status-bar-pattern-default@2x.jpg"; sourceTree = "<group>"; };
 		506DDF41167505FE0020222B /* status-bar-progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status-bar-progress.png"; path = "BWStatusBarOverlay/status-bar-progress.png"; sourceTree = "<group>"; };
 		506DDF42167505FE0020222B /* status-bar-progress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status-bar-progress@2x.png"; path = "BWStatusBarOverlay/status-bar-progress@2x.png"; sourceTree = "<group>"; };
+		507D5CD31676F8D700B337A8 /* Modern Sabahlar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Modern Sabahlar-Prefix.pch"; sourceTree = "<group>"; };
 		50A1E29E166E90100045B1E7 /* MS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50A1E2A4166E90100045B1E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,7 +120,6 @@
 		50A1E2AC166E90100045B1E7 /* Modern Sabahlar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Modern Sabahlar-Info.plist"; sourceTree = "<group>"; };
 		50A1E2AE166E90100045B1E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		50A1E2B0166E90100045B1E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		50A1E2B2166E90100045B1E7 /* Modern Sabahlar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Modern Sabahlar-Prefix.pch"; sourceTree = "<group>"; };
 		50A1E2B3166E90100045B1E7 /* MSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSAppDelegate.h; sourceTree = "<group>"; };
 		50A1E2B4166E90100045B1E7 /* MSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSAppDelegate.m; sourceTree = "<group>"; };
 		50A1E2BD166E90100045B1E7 /* Modern_Sabahlar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modern_Sabahlar.xcdatamodel; sourceTree = "<group>"; };
@@ -267,6 +267,7 @@
 		50A1E2AA166E90100045B1E7 /* Modern Sabahlar */ = {
 			isa = PBXGroup;
 			children = (
+				507D5CD31676F8D700B337A8 /* Modern Sabahlar-Prefix.pch */,
 				502C3B77167664ED0083FB2D /* Model */,
 				502C3B76167664D00083FB2D /* ViewControllers */,
 				50A1E2B3166E90100045B1E7 /* MSAppDelegate.h */,
@@ -276,8 +277,9 @@
 				5030D0E0167326CA008733D3 /* MSPodcastCell.h */,
 				5030D0E1167326CA008733D3 /* MSPodcastCell.m */,
 			);
-			path = "Modern Sabahlar";
-			sourceTree = "<group>";
+			name = "Modern Sabahlar";
+			path = "/Users/onurbaykal/Development/Modern Sabahlar/Modern Sabahlar";
+			sourceTree = "<absolute>";
 		};
 		50A1E2AB166E90100045B1E7 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -291,7 +293,6 @@
 				50A1E2AC166E90100045B1E7 /* Modern Sabahlar-Info.plist */,
 				50A1E2AD166E90100045B1E7 /* InfoPlist.strings */,
 				50A1E2B0166E90100045B1E7 /* main.m */,
-				50A1E2B2166E90100045B1E7 /* Modern Sabahlar-Prefix.pch */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
