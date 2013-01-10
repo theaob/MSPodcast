@@ -39,6 +39,7 @@
 		504E94F616746B4C00B5531B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94F516746B4C00B5531B /* Default.png */; };
 		504E94F916746CBE00B5531B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94F816746CBE00B5531B /* Default-568h@2x.png */; };
 		504E94FB16746CC300B5531B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 504E94FA16746CC300B5531B /* Default@2x.png */; };
+		5068225E1677A21800AEB822 /* MSAudioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5068225D1677A21800AEB822 /* MSAudioViewController.m */; };
 		506DDF39167505510020222B /* GSProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 506DDF38167505510020222B /* GSProgressView.m */; };
 		506DDF43167505FE0020222B /* BWStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 506DDF3C167505FE0020222B /* BWStatusBarOverlay.m */; };
 		506DDF44167505FE0020222B /* status-bar-pattern-black.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF3D167505FE0020222B /* status-bar-pattern-black.jpg */; };
@@ -101,6 +102,8 @@
 		504E94F516746B4C00B5531B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		504E94F816746CBE00B5531B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		504E94FA16746CC300B5531B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		5068225C1677A21800AEB822 /* MSAudioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSAudioViewController.h; sourceTree = "<group>"; };
+		5068225D1677A21800AEB822 /* MSAudioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSAudioViewController.m; sourceTree = "<group>"; };
 		506DDF371675054B0020222B /* GSProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GSProgressView.h; path = GSProgressView/GSProgressView.h; sourceTree = "<group>"; };
 		506DDF38167505510020222B /* GSProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSProgressView.m; path = GSProgressView/GSProgressView.m; sourceTree = "<group>"; };
 		506DDF3B167505EE0020222B /* BWStatusBarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BWStatusBarOverlay.h; path = "/Users/onurbaykal/Development/Modern Sabahlar/BWStatusBarOverlay/BWStatusBarOverlay.h"; sourceTree = "<absolute>"; };
@@ -192,6 +195,8 @@
 				5030D0E51673361A008733D3 /* MSNavigationViewController.m */,
 				50A1E2C8166E91D10045B1E7 /* MSTableViewController.h */,
 				50A1E2C9166E91D10045B1E7 /* MSTableViewController.m */,
+				5068225C1677A21800AEB822 /* MSAudioViewController.h */,
+				5068225D1677A21800AEB822 /* MSAudioViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 				50E68ABB1674DADC0022CC82 /* MBProgressHUD.m in Sources */,
 				506DDF39167505510020222B /* GSProgressView.m in Sources */,
 				506DDF43167505FE0020222B /* BWStatusBarOverlay.m in Sources */,
+				5068225E1677A21800AEB822 /* MSAudioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

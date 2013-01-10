@@ -18,4 +18,8 @@
 @property (nonatomic, retain) NSString * duration;
 @property (nonatomic, retain) NSNumber * finished;
 
+//- (Podcast *) nextPodcast;
+
+//- (Podcast *) previousPodcast;
+
 @end

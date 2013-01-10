@@ -27,6 +27,13 @@
     
     [self.tableView setDataSource:self];
     
+    if( _statusOverlay == nil )
+    {
+        _statusOverlay = [BWStatusBarOverlay shared];
+    }
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    [BWStatusBarOverlay setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.Mode = MBProgressHUDModeIndeterminate;
@@ -143,11 +150,15 @@
 {
     Podcast * selectedPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
     
+    
+    
+    /*
+    
     NSString * podcastPath = [[NSString alloc] initWithString:selectedPodcast.audioPath];
     
     NSURL * podcastURL = [[NSURL alloc] initWithString:podcastPath];
     
-    /*[self streamAudioAt:podcastURL];*/
+    [self streamAudioAt:podcastURL];
     
     selectedPodcast.isPlayed = [NSNumber numberWithBool:YES];
     
@@ -155,7 +166,7 @@
     
     MPMusicPlayerController * player = [MPMusicPlayerController applicationMusicPlayer];
     
-    [player setShuffleMode:MPMusicShuffleModeOff];
+    [player setShuffleMode:MPMusicShuffleModeOff];*/
     
 }
 
@@ -219,53 +230,56 @@ static NSString * audioAddressString;
     
     TBXMLElement * firstItem = [TBXML childElementNamed:@"channel" parentElement:rootElement];
     
-    firstItem = [TBXML childElementNamed:@"item" parentElement:firstItem];
-    
-    while(firstItem != nil)
+    if( firstItem != nil )
     {
-        dataElement = [TBXML childElementNamed:@"title" parentElement:firstItem];
+        firstItem = [TBXML childElementNamed:@"item" parentElement:firstItem];
         
-        titleString = [TBXML textForElement:dataElement];
-        
-        dataElement = [TBXML childElementNamed:@"guid" parentElement:firstItem];
-        
-        audioAddressString = [TBXML textForElement:dataElement];
-        
-        audioAddressString = [audioAddressString stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
-        
-        dataElement = [TBXML childElementNamed:@"itunes:duration" parentElement:firstItem];
-        
-        durationString = [TBXML textForElement:dataElement];
-        
-        titleString = [titleString substringFromIndex:16];
-        
-        
-        if(![[titleString substringToIndex:1] isEqualToString:@"~"])
+        while(firstItem != nil)
         {
-            _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
+            dataElement = [TBXML childElementNamed:@"title" parentElement:firstItem];
             
-            NSDate * parsedPodcastDate = [MSTableViewController parseDate:titleString format:@"dd/MM/yy"];
+            titleString = [TBXML textForElement:dataElement];
             
-            _parsedPodcast.title = parsedPodcastDate;
-            _parsedPodcast.duration = durationString;
-            _parsedPodcast.audioPath = audioAddressString;
-            _parsedPodcast.finished = NO;
-            _parsedPodcast.isPlayed = NO;
+            dataElement = [TBXML childElementNamed:@"guid" parentElement:firstItem];
             
-            if(parsedPodcastDate < latestPodcast.title)
+            audioAddressString = [TBXML textForElement:dataElement];
+            
+            audioAddressString = [audioAddressString stringByReplacingOccurrencesOfString:@"amp;" withString:@""];
+            
+            dataElement = [TBXML childElementNamed:@"itunes:duration" parentElement:firstItem];
+            
+            durationString = [TBXML textForElement:dataElement];
+            
+            titleString = [titleString substringFromIndex:16];
+            
+            
+            if(![[titleString substringToIndex:1] isEqualToString:@"~"])
             {
-                [_managedObjectContext insertObject:_parsedPodcast];
+                _parsedPodcast = [[Podcast alloc] initWithEntity:ped insertIntoManagedObjectContext:_managedObjectContext];
+                
+                NSDate * parsedPodcastDate = [MSTableViewController parseDate:titleString format:@"dd/MM/yy"];
+                
+                _parsedPodcast.title = parsedPodcastDate;
+                _parsedPodcast.duration = durationString;
+                _parsedPodcast.audioPath = audioAddressString;
+                _parsedPodcast.finished = NO;
+                _parsedPodcast.isPlayed = NO;
+                
+                if(parsedPodcastDate < latestPodcast.title)
+                {
+                    [_managedObjectContext insertObject:_parsedPodcast];
+                }
+                else
+                {
+                    break;
+                }
             }
-            else
-            {
-                break;
-            }
+            
+            firstItem = firstItem->nextSibling;
         }
-
-        firstItem = firstItem->nextSibling;
+        
+        [self saveData];
     }
-    
-    [self saveData];
 }
 
 - (void) saveData
@@ -317,7 +331,9 @@ static AVPlayer * audioPlayer;
     NSString * mp3Path = @"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2848&dummy.mp3?";
     NSURL * mp3URL = [[NSURL alloc] initWithString:mp3Path];
     
-    [self streamAudioAt:mp3URL];
+    [self.statusOverlay showLoadingWithMessage:@"Downloading" animated:YES];
+    
+    //[self streamAudioAt:mp3URL];
 }
 
 - (void)streamAudioAt:(NSURL *) url

@@ -12,6 +12,7 @@
 #import "Podcast.h"
 #import "TBXML+HTTP.h"
 #import "MBProgressHUD.h"
+#import "BWStatusBarOverlay.h"
 
 @interface MSTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -20,6 +21,7 @@
 @property (nonatomic, strong) TBXML * tbxmlParser;
 @property (nonatomic, strong) Podcast * parsedPodcast;
 @property (nonatomic) BOOL shouldSaveData;
+@property (nonatomic, strong) BWStatusBarOverlay * statusOverlay;
 
 - (IBAction)downloadButtonPressed:(UIButton *)sender;
 
