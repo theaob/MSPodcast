@@ -25,26 +25,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="29" id="bP7-pO-UDo"/>
-                                                <constraint firstAttribute="height" constant="28" id="gJb-hc-rad"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                            <state key="normal" title="DL">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="downloadButtonPressed:" destination="ckI-Zz-l0r" eventType="touchUpInside" id="Pfd-6e-QL8"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TN-Ez-iLc">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="tPZ-Ag-cH1"/>
+                                                <constraint firstAttribute="height" constant="21" id="tU6-ab-B2i"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -61,23 +44,46 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-Eb-2x8">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="4ej-cc-vMF"/>
-                                                <constraint firstAttribute="width" constant="10" id="lyM-Nz-01v"/>
+                                                <constraint firstAttribute="width" constant="10" id="FAb-cs-xBf"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGe-Rl-jHL" customClass="DACircularProgressView">
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdl-9u-OJz">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="51" id="57L-bU-iPs"/>
+                                                <constraint firstAttribute="width" constant="29" id="QBO-TO-LNk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="downloadButtonPressed:" destination="ckI-Zz-l0r" eventType="touchUpInside" id="Pfd-6e-QL8"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Nxn-Eb-2x8" firstAttribute="centerY" secondItem="GIU-Dz-jSR" secondAttribute="centerY" type="default" id="3e5-rH-bPo"/>
-                                    <constraint firstAttribute="trailing" secondItem="Bdl-9u-OJz" secondAttribute="trailing" constant="20" type="default" id="93C-EC-p91"/>
+                                    <constraint firstAttribute="trailing" secondItem="EGe-Rl-jHL" secondAttribute="trailing" constant="20" type="default" id="6Ce-bq-NQX"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="centerY" secondItem="EGe-Rl-jHL" secondAttribute="centerY" type="default" id="9pR-NQ-ADV"/>
                                     <constraint firstItem="5zh-Mm-bnB" firstAttribute="trailing" secondItem="GIU-Dz-jSR" secondAttribute="trailing" type="default" id="A9j-D5-Aok"/>
+                                    <constraint firstItem="EGe-Rl-jHL" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="16" id="LUu-zM-Jm0"/>
                                     <constraint firstItem="5zh-Mm-bnB" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Lki-tI-8Gr"/>
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="leading" secondItem="Nxn-Eb-2x8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="N5s-CN-82v"/>
-                                    <constraint firstItem="7TN-Ez-iLc" firstAttribute="baseline" secondItem="Bdl-9u-OJz" secondAttribute="baseline" type="default" id="OZ0-UR-Qaw"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="leading" secondItem="EGe-Rl-jHL" secondAttribute="leading" type="default" id="Nol-qN-JzX"/>
+                                    <constraint firstItem="Nxn-Eb-2x8" firstAttribute="centerY" secondItem="GIU-Dz-jSR" secondAttribute="centerY" type="default" id="Qjm-Sh-jQ2"/>
                                     <constraint firstItem="7TN-Ez-iLc" firstAttribute="top" secondItem="GIU-Dz-jSR" secondAttribute="top" constant="20" type="default" id="Wub-sl-esb"/>
-                                    <constraint firstItem="5zh-Mm-bnB" firstAttribute="centerY" secondItem="Bdl-9u-OJz" secondAttribute="centerY" type="default" id="giO-wV-3oj"/>
                                     <constraint firstItem="Nxn-Eb-2x8" firstAttribute="leading" secondItem="GIU-Dz-jSR" secondAttribute="leading" constant="13" type="user" id="jWc-te-Xvl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bdl-9u-OJz" secondAttribute="trailing" constant="20" type="default" id="rRB-KY-2ex"/>
                                     <constraint firstItem="5zh-Mm-bnB" firstAttribute="leading" secondItem="7TN-Ez-iLc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="sKU-nP-eha"/>
+                                    <constraint firstItem="Bdl-9u-OJz" firstAttribute="centerY" secondItem="5zh-Mm-bnB" secondAttribute="centerY" type="default" id="zUb-v6-VJa"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="lengthLabel" destination="5zh-Mm-bnB" id="IKh-8d-ivj"/>
@@ -376,6 +382,9 @@
         <image name="skipping-back-button.png" width="24" height="25"/>
     </resources>
     <classes>
+        <class className="DACircularProgressView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DACircularProgressView.h"/>
+        </class>
         <class className="MPVolumeView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MPVolumeView.h"/>
         </class>

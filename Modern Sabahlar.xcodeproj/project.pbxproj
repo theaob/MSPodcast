@@ -48,6 +48,7 @@
 		506DDF47167505FE0020222B /* status-bar-pattern-default@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF40167505FE0020222B /* status-bar-pattern-default@2x.jpg */; };
 		506DDF48167505FE0020222B /* status-bar-progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF41167505FE0020222B /* status-bar-progress.png */; };
 		506DDF49167505FE0020222B /* status-bar-progress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF42167505FE0020222B /* status-bar-progress@2x.png */; };
+		507CCD12169E8AA2007EF267 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 507CCD11169E8AA2007EF267 /* DACircularProgressView.m */; };
 		50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A2166E90100045B1E7 /* UIKit.framework */; };
 		50A1E2A5166E90100045B1E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A4166E90100045B1E7 /* Foundation.framework */; };
 		50A1E2A7166E90100045B1E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */; };
@@ -114,6 +115,8 @@
 		506DDF40167505FE0020222B /* status-bar-pattern-default@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "status-bar-pattern-default@2x.jpg"; path = "BWStatusBarOverlay/status-bar-pattern-default@2x.jpg"; sourceTree = "<group>"; };
 		506DDF41167505FE0020222B /* status-bar-progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status-bar-progress.png"; path = "BWStatusBarOverlay/status-bar-progress.png"; sourceTree = "<group>"; };
 		506DDF42167505FE0020222B /* status-bar-progress@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "status-bar-progress@2x.png"; path = "BWStatusBarOverlay/status-bar-progress@2x.png"; sourceTree = "<group>"; };
+		507CCD10169E8AA2007EF267 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		507CCD11169E8AA2007EF267 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		507D5CD31676F8D700B337A8 /* Modern Sabahlar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Modern Sabahlar-Prefix.pch"; sourceTree = "<group>"; };
 		50A1E29E166E90100045B1E7 /* MS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -235,9 +238,19 @@
 			name = BWStatusOverlay;
 			sourceTree = "<group>";
 		};
+		507CCD0F169E8AA2007EF267 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				507CCD10169E8AA2007EF267 /* DACircularProgressView.h */,
+				507CCD11169E8AA2007EF267 /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = SOURCE_ROOT;
+		};
 		50A1E293166E90100045B1E7 = {
 			isa = PBXGroup;
 			children = (
+				507CCD0F169E8AA2007EF267 /* DACircularProgress */,
 				506DDF3A167505DD0020222B /* BWStatusOverlay */,
 				506DDF361675053C0020222B /* GSProgress */,
 				50E68AB71674DABD0022CC82 /* MBProgressHUD */,
@@ -448,6 +461,7 @@
 				506DDF39167505510020222B /* GSProgressView.m in Sources */,
 				506DDF43167505FE0020222B /* BWStatusBarOverlay.m in Sources */,
 				5068225E1677A21800AEB822 /* MSAudioViewController.m in Sources */,
+				507CCD12169E8AA2007EF267 /* DACircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
