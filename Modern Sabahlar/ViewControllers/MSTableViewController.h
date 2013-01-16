@@ -22,6 +22,7 @@
 @property (nonatomic, strong) Podcast * parsedPodcast;
 @property (nonatomic) BOOL shouldSaveData;
 @property (nonatomic, strong) BWStatusBarOverlay * statusOverlay;
+@property (nonatomic, strong) NSOperationQueue * downloadQueue;
 
 - (IBAction)downloadButtonPressed:(UIButton *)sender;
 

@@ -73,6 +73,11 @@
         latestPodcast = [[self.fetchResultsController fetchedObjects] objectAtIndex:0];
         [self retreivePodcastsFromXML:latestPodcast];
     }
+    
+    if( self.downloadQueue == nil)
+    {
+        self.downloadQueue = [[NSOperationQueue alloc] init];
+    }
 
 }
 
@@ -101,11 +106,6 @@
     static NSString *CellIdentifier = @"podcastCell";
     
     MSPodcastCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if(cell == nil)
-    {
-        cell = [[MSPodcastCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
     
     Podcast * cellPodcast = [self.fetchResultsController objectAtIndexPath:indexPath];
     
@@ -140,6 +140,11 @@
         }
     }
 
+    [cell.progressView setProgressTintColor:[UIColor blackColor]];
+    [cell.progressView setTrackTintColor:[UIColor grayColor]];
+
+    
+    cell.progressView.progress = 0.5;
     
     return cell;
 }
@@ -329,9 +334,13 @@ static AVPlayer * audioPlayer;
 - (IBAction)downloadButtonPressed:(UIButton *)sender
 {
     NSString * mp3Path = @"http://www.radyoodtu.com.tr/podcasts/mediaredirect.asp?ch=1&itid=2848&dummy.mp3?";
+    MSPodcastCell * tappedCell = (MSPodcastCell *)[sender superview];
+    //[tappedCell ]
     NSURL * mp3URL = [[NSURL alloc] initWithString:mp3Path];
     
     [self.statusOverlay showLoadingWithMessage:@"Downloading" animated:YES];
+    
+    [self addPodcastToDownloadQueue:nil];
     
     //[self streamAudioAt:mp3URL];
 }
@@ -342,4 +351,10 @@ static AVPlayer * audioPlayer;
     
     [audioPlayer play];
 }
+
+- (void)addPodcastToDownloadQueue:(Podcast *)podcast
+{
+    
+}
+
 @end

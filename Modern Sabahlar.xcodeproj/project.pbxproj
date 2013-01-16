@@ -49,6 +49,7 @@
 		506DDF48167505FE0020222B /* status-bar-progress.png in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF41167505FE0020222B /* status-bar-progress.png */; };
 		506DDF49167505FE0020222B /* status-bar-progress@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 506DDF42167505FE0020222B /* status-bar-progress@2x.png */; };
 		507CCD12169E8AA2007EF267 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 507CCD11169E8AA2007EF267 /* DACircularProgressView.m */; };
+		5083817B16A663E500FC05C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5083817A16A663E500FC05C2 /* QuartzCore.framework */; };
 		50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A2166E90100045B1E7 /* UIKit.framework */; };
 		50A1E2A5166E90100045B1E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A4166E90100045B1E7 /* Foundation.framework */; };
 		50A1E2A7166E90100045B1E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E2A6166E90100045B1E7 /* CoreGraphics.framework */; };
@@ -118,6 +119,7 @@
 		507CCD10169E8AA2007EF267 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		507CCD11169E8AA2007EF267 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		507D5CD31676F8D700B337A8 /* Modern Sabahlar-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Modern Sabahlar-Prefix.pch"; sourceTree = "<group>"; };
+		5083817A16A663E500FC05C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		50A1E29E166E90100045B1E7 /* MS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50A1E2A2166E90100045B1E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		50A1E2A4166E90100045B1E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5083817B16A663E500FC05C2 /* QuartzCore.framework in Frameworks */,
 				502C3B35167654B50083FB2D /* MediaPlayer.framework in Frameworks */,
 				50BB95BC1673C05500410088 /* AVFoundation.framework in Frameworks */,
 				50A1E2A3166E90100045B1E7 /* UIKit.framework in Frameworks */,
@@ -272,6 +275,7 @@
 		50A1E2A1166E90100045B1E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5083817A16A663E500FC05C2 /* QuartzCore.framework */,
 				502C3B34167654B50083FB2D /* MediaPlayer.framework */,
 				50BB95BB1673C05500410088 /* AVFoundation.framework */,
 				50A1E2A2166E90100045B1E7 /* UIKit.framework */,
